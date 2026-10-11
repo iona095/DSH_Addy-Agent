@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-11T14:01:41.142Z",
+  "testedAt": "2026-10-11T16:15:03.118Z",
   "nodeVersion": "v24.15.0",
   "runtime": {
     "dsh": "0.2.1-alpha.2",
@@ -33,8 +33,8 @@
       "name": "A1c explicit reasoning permits the justified new function",
       "pass": true,
       "detail": {
-        "recordId": "dg_41b80119-2684-445d-9e5c-2865bfc7090e",
-        "revision": "0cc611a22e96299b74a75857f3f53d5adbfeb7ff",
+        "recordId": "dg_89c34ace-0383-4800-9498-2eec273db461",
+        "revision": "9dd45711814a6f8b76835b52befe495981f0f0d8",
         "declaredElsewhere": [
           "parseConfig@src/parser.mjs:2"
         ],
@@ -52,7 +52,7 @@
       "name": "A2 new function where no equivalent exists → preflight accepted, write allowed",
       "pass": true,
       "detail": {
-        "recordId": "dg_ffdd559e-ea39-4318-af36-8a7fdb03c4a1",
+        "recordId": "dg_387616c5-0cfe-453f-b3ac-8a2d3de10552",
         "scanned": 5,
         "created": "src/timeline.mjs"
       }
@@ -108,9 +108,9 @@
       "name": "A6 missing then stale discovery evidence is refused with the exact revision pair",
       "pass": true,
       "detail": {
-        "oldHead": "0cc611a22e96299b74a75857f3f53d5adbfeb7ff",
-        "newHead": "4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8",
-        "staleDenial": "Recorded evidence is stale: recorded at revision 0cc611a22e96299b74a75857f3f53d5adbfeb7ff, repository HEAD is 4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8."
+        "oldHead": "9dd45711814a6f8b76835b52befe495981f0f0d8",
+        "newHead": "f100b64e315dc22537f98038a43cb902affc0f37",
+        "staleDenial": "Recorded evidence is stale: recorded at revision 9dd45711814a6f8b76835b52befe495981f0f0d8, repository HEAD is f100b64e315dc22537f98038a43cb902affc0f37."
       }
     },
     {
@@ -132,7 +132,7 @@
       "pass": true,
       "detail": {
         "blockedCommit": "src/bypass.mjs:1 bypassThing()",
-        "head": "4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8"
+        "head": "f100b64e315dc22537f98038a43cb902affc0f37"
       }
     },
     {
@@ -171,15 +171,15 @@
       "name": "A12 overhead: the guard adds bounded cost and ungated calls stay cheap",
       "pass": true,
       "detail": {
-        "read production file": "guarded 2.101 ms vs unguarded 2.102 ms (delta -0.001)",
-        "write test file (exempt)": "guarded 5.974 ms vs unguarded 6.18 ms (delta -0.206)",
-        "edit value, no new function": "guarded 10.249 ms vs unguarded 9.606 ms (delta 0.643)",
-        "read-only pwsh command": "guarded 405.121 ms vs unguarded 405.597 ms (delta -0.476)",
-        "production write denied (guarded only)": "p50 0.586 ms / p95 29.526 ms",
-        "preflight, small fixture (guarded only)": "p50 9.509 ms / p95 10.038 ms",
-        "production write, all introduced symbols declared (guarded only)": "p50 6.91 ms / p95 7.351 ms",
-        "production write, undeclared symbol forces a postcheck scan (guarded only)": "p50 16.125 ms / p95 17.963 ms",
-        "git add + git commit incl. boundary validation (guarded only)": "p50 666.561 ms / p95 666.561 ms"
+        "read production file": "guarded 2.571 ms vs unguarded 2.6 ms (delta -0.029)",
+        "write test file (exempt)": "guarded 7.719 ms vs unguarded 7.054 ms (delta 0.665)",
+        "edit value, no new function": "guarded 10.11 ms vs unguarded 9.419 ms (delta 0.691)",
+        "read-only pwsh command": "guarded 420.004 ms vs unguarded 421.416 ms (delta -1.412)",
+        "production write denied (guarded only)": "p50 0.442 ms / p95 26.592 ms",
+        "preflight, small fixture (guarded only)": "p50 9.293 ms / p95 9.392 ms",
+        "production write, all introduced symbols declared (guarded only)": "p50 6.617 ms / p95 7.185 ms",
+        "production write, undeclared symbol forces a postcheck scan (guarded only)": "p50 17.042 ms / p95 17.991 ms",
+        "git add + git commit incl. boundary validation (guarded only)": "p50 623.576 ms / p95 623.576 ms"
       }
     },
     {
@@ -220,7 +220,7 @@
         "preflightRejected": true,
         "approvalRegistered": false,
         "mutationDenied": true,
-        "causePreserved": "EEXIST: file already exists, mkdir 'C:\\Users\\GNV\\AppData\\Local\\Temp\\dg-evblock-1791727311238'"
+        "causePreserved": "EEXIST: file already exists, mkdir 'C:\\Users\\GNV\\AppData\\Local\\Temp\\dg-evblock-1791735313629'"
       }
     },
     {
@@ -229,7 +229,7 @@
       "detail": {
         "verified": true,
         "bytes": 820,
-        "sha256": "e7b69a4fdff1…",
+        "sha256": "fc3d95bf9572…",
         "retrySafe": true
       }
     },
@@ -295,7 +295,7 @@
       "name": "B2 preflight through the PTC binding authorises the nested mutation",
       "pass": true,
       "detail": {
-        "recordId": "dg_2b92f312-e6e9-40ed-8591-ef301f2273a9",
+        "recordId": "dg_0297d4a2-7f9c-45d8-a6f5-467f65db6050",
         "created": "src/ptc-dup.mjs"
       }
     },
@@ -345,97 +345,97 @@
     {
       "label": "read production file",
       "guarded": {
-        "p50": 2.101,
-        "p95": 2.726,
-        "max": 2.726
+        "p50": 2.571,
+        "p95": 4.287,
+        "max": 4.287
       },
       "unguarded": {
-        "p50": 2.102,
-        "p95": 2.703,
-        "max": 2.703
+        "p50": 2.6,
+        "p95": 4.104,
+        "max": 4.104
       },
-      "deltaP50": -0.001
+      "deltaP50": -0.029
     },
     {
       "label": "write test file (exempt)",
       "guarded": {
-        "p50": 5.974,
-        "p95": 7.059,
-        "max": 7.059
+        "p50": 7.719,
+        "p95": 8.077,
+        "max": 8.077
       },
       "unguarded": {
-        "p50": 6.18,
-        "p95": 6.311,
-        "max": 6.311
+        "p50": 7.054,
+        "p95": 7.531,
+        "max": 7.531
       },
-      "deltaP50": -0.206
+      "deltaP50": 0.665
     },
     {
       "label": "edit value, no new function",
       "guarded": {
-        "p50": 10.249,
-        "p95": 10.872,
-        "max": 10.872
+        "p50": 10.11,
+        "p95": 11.371,
+        "max": 11.371
       },
       "unguarded": {
-        "p50": 9.606,
-        "p95": 10.01,
-        "max": 10.01
+        "p50": 9.419,
+        "p95": 12.846,
+        "max": 12.846
       },
-      "deltaP50": 0.643
+      "deltaP50": 0.691
     },
     {
       "label": "read-only pwsh command",
       "guarded": {
-        "p50": 405.121,
-        "p95": 408.919,
-        "max": 408.919
+        "p50": 420.004,
+        "p95": 434.755,
+        "max": 434.755
       },
       "unguarded": {
-        "p50": 405.597,
-        "p95": 407.107,
-        "max": 407.107
+        "p50": 421.416,
+        "p95": 437.874,
+        "max": 437.874
       },
-      "deltaP50": -0.476
+      "deltaP50": -1.412
     },
     {
       "label": "production write denied (guarded only)",
       "guarded": {
-        "p50": 0.586,
-        "p95": 29.526,
-        "max": 29.526
+        "p50": 0.442,
+        "p95": 26.592,
+        "max": 26.592
       }
     },
     {
       "label": "preflight, small fixture (guarded only)",
       "guarded": {
-        "p50": 9.509,
-        "p95": 10.038,
-        "max": 10.038
+        "p50": 9.293,
+        "p95": 9.392,
+        "max": 9.392
       }
     },
     {
       "label": "production write, all introduced symbols declared (guarded only)",
       "guarded": {
-        "p50": 6.91,
-        "p95": 7.351,
-        "max": 7.351
+        "p50": 6.617,
+        "p95": 7.185,
+        "max": 7.185
       }
     },
     {
       "label": "production write, undeclared symbol forces a postcheck scan (guarded only)",
       "guarded": {
-        "p50": 16.125,
-        "p95": 17.963,
-        "max": 17.963
+        "p50": 17.042,
+        "p95": 17.991,
+        "max": 17.991
       }
     },
     {
       "label": "git add + git commit incl. boundary validation (guarded only)",
       "guarded": {
-        "p50": 666.561,
-        "p95": 666.561,
-        "max": 666.561
+        "p50": 623.576,
+        "p95": 623.576,
+        "max": 623.576
       }
     }
   ],
@@ -444,63 +444,63 @@
     "denied": 17,
     "allowed": 96,
     "failures": 0,
-    "totalMs": 534.0653999999995,
-    "maxMs": 82.95450000000164,
+    "totalMs": 503.6859999999991,
+    "maxMs": 71.63379999999995,
     "preflights": 12,
-    "preflightMs": 118,
+    "preflightMs": 139,
     "rechecks": 20,
-    "recheckMs": 55,
+    "recheckMs": 56,
     "recheckFailures": 0,
     "byKind": {
       "untracked-tool": {
         "count": 35,
-        "totalMs": 0.089,
-        "maxMs": 0.028
+        "totalMs": 0.11,
+        "maxMs": 0.027
       },
       "fs-mutation-unapproved": {
         "count": 13,
-        "totalMs": 140.22,
-        "maxMs": 53.762
+        "totalMs": 130.994,
+        "maxMs": 52.438
       },
       "fs-mutation-approved": {
         "count": 20,
-        "totalMs": 3.896,
-        "maxMs": 0.708
+        "totalMs": 3.966,
+        "maxMs": 0.783
       },
       "fs-no-new-function": {
         "count": 17,
-        "totalMs": 9.992,
-        "maxMs": 0.906
+        "totalMs": 8.793,
+        "maxMs": 0.686
       },
       "fs-ungated-path": {
         "count": 10,
-        "totalMs": 0.252,
-        "maxMs": 0.031
+        "totalMs": 0.358,
+        "maxMs": 0.047
       },
       "git-boundary-approved": {
         "count": 4,
-        "totalMs": 263.426,
-        "maxMs": 82.955
+        "totalMs": 242.203,
+        "maxMs": 71.634
       },
       "shell-mutation-unapproved": {
         "count": 2,
-        "totalMs": 1.027,
-        "maxMs": 0.973
+        "totalMs": 0.815,
+        "maxMs": 0.766
       },
       "shell-ungated": {
         "count": 8,
-        "totalMs": 0.377,
-        "maxMs": 0.082
+        "totalMs": 0.462,
+        "maxMs": 0.073
       },
       "git-boundary-denied": {
         "count": 2,
-        "totalMs": 114.649,
-        "maxMs": 58.436
+        "totalMs": 115.851,
+        "maxMs": 59.027
       },
       "shell-mutation-approved": {
         "count": 1,
-        "totalMs": 0.116,
-        "maxMs": 0.116
+        "totalMs": 0.11,
+        "maxMs": 0.11
       },
       "fs-outside-repository": {
         "count": 1,
@@ -508,7 +508,7 @@
         "maxMs": 0.019
       }
     },
-    "averageEvaluationMs": 4.726
+    "averageEvaluationMs": 4.457
   },
   "hostA": {
     "mounted": [
@@ -530,7 +530,7 @@
     "shellTools": [
       "pwsh"
     ],
-    "head": "446efd74c76b997660baf8a2a27d078167ccd60a"
+    "head": "a484e5b192cb54bf83f0cc1c773cf5430f4124ff"
   },
   "pass": true
 }

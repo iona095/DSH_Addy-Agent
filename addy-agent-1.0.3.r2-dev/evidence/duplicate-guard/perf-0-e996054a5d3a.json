@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_af453a24-cee6-486c-adb6-a206165301b8",
+  "task": "perf-0",
+  "intent": "overhead probe",
+  "agentId": "dg-perf",
+  "revision": "ef2123f7d4f3e3c3203986117acd1d36e89c1433",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-UhrUVf",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "perfApproved0"
+  ],
+  "symbolFiles": {
+    "perfApproved0": "src/perf-approved-0.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 13,
+    "bytesScanned": 1048,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 7,
+    "declarations": {
+      "perfApproved0": []
+    },
+    "similar": {
+      "perfApproved0": []
+    },
+    "references": {
+      "perfApproved0": []
+    }
+  },
+  "at": "2026-10-11T16:15:12.192Z"
+}

@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_26d6325f-9da4-407e-b9cc-d5282c13c0af",
+  "task": "ptc-abs",
+  "intent": "absolute path via PTC",
+  "agentId": "dg-addy",
+  "revision": "d0254f2018e3972f55901b13011e6da0acee2f7d",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-b-uIECDQ",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "ptcAbsThing"
+  ],
+  "symbolFiles": {
+    "ptcAbsThing": "src/ptc-abs.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 7,
+    "bytesScanned": 488,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 4,
+    "declarations": {
+      "ptcAbsThing": []
+    },
+    "similar": {
+      "ptcAbsThing": []
+    },
+    "references": {
+      "ptcAbsThing": []
+    }
+  },
+  "at": "2026-10-11T16:15:16.262Z"
+}

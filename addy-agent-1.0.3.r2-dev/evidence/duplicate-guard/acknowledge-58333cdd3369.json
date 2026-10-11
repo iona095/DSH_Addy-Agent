@@ -1,0 +1,21 @@
+{
+  "kind": "acknowledge",
+  "agentId": "dg-postcheck",
+  "file": "src/m3.mjs",
+  "justification": "unreviewedName is a deliberate domain-specific variant kept for API stability.",
+  "resolved": [
+    {
+      "file": "src/m3.mjs",
+      "status": "verified",
+      "unacknowledged": [
+        {
+          "name": "unreviewedName",
+          "path": "src/m2.mjs",
+          "line": 5
+        }
+      ],
+      "verificationError": null
+    }
+  ],
+  "at": "2026-10-11T16:15:06.119Z"
+}

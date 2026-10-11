@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_8ada9d64-1aef-4c8b-a03f-5038e8e748bb",
+  "task": "stale-task",
+  "intent": "x",
+  "agentId": "dg-stale",
+  "revision": "9dd45711814a6f8b76835b52befe495981f0f0d8",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-UhrUVf",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "staleThing"
+  ],
+  "symbolFiles": {
+    "staleThing": "src/stale.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 7,
+    "bytesScanned": 761,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 3,
+    "declarations": {
+      "staleThing": []
+    },
+    "similar": {
+      "staleThing": []
+    },
+    "references": {
+      "staleThing": []
+    }
+  },
+  "at": "2026-10-11T16:15:03.840Z"
+}

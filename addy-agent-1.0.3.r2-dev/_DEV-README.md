@@ -4,11 +4,11 @@ Source: M:\AIFUN\WorkDir\addy-agent (full copy, 2026-10-11)
 Version: 1.0.3 (@local/dsh-addy-agent)
 Upstream: https://github.com/addyosmani/agent-skills @ 1be8e34187e34647bb83adc3a1323b26ae6f6abe
 Target DSH runtime: 0.2.1-alpha.2
-Contents: 426 files, ~24 MB (vs -latest install bundle 230 files, ~1.3 MB)
+Contents: 426 files, ~24 MB (vs r2-Install install bundle 230 files, ~1.3 MB)
 
-## -latest vs -dev
-- addy-agent-1.0.3-latest = install only: top files + locale + upstream (212 files, no .git). Use to install on another machine.
-- addy-agent-1.0.3-dev (this folder) = evolve: everything in -latest PLUS:
+## r2-Install vs r2-dev
+- addy-agent-1.0.3.r2-Install = install only: top files + locale + upstream (212 files, no .git). Use to install on another machine.
+- addy-agent-1.0.3.r2-dev (this folder) = evolve: everything in r2-Install PLUS:
   - tests/ (21 files, 0.18 MB) — contract + native + duplicate-guard + live-verifier suites
   - evidence/ (176 files) — baselines: contracts-*.json, native-*.json, duplicate-guard-*.json, live-*.json + live-*.md reports, before-install.json
   - upstream/.git/ (28 files, 2 MB) — needed so prepare.mjs can run git ls-tree/hash-object to rebuild upstream-manifest.json when bumping upstream
@@ -26,5 +26,5 @@ Contents: 426 files, ~24 MB (vs -latest install bundle 230 files, ~1.3 MB)
 5. Re-install via Plugin Manager install_bundle (absolute path), new session -> Addy Agent, test /spec /plan /build /test /ship.
 6. Update README.md / VERIFICATION.md / REPAIR_NOTES.md / DUPLICATE-GUARD.md + keep new evidence/ before shipping.
 
-## Install on another machine from -dev
-Works same as -latest (install_bundle absolute path), just heavier (~24 MB vs ~1.3 MB) because of tests/evidence/.git. Prefer -latest for pure install.
+## Install on another machine from r2-dev
+Works same as r2-Install (install_bundle absolute path), just heavier (~24 MB vs ~1.3 MB) because of tests/evidence/.git. Prefer r2-Install for pure install.

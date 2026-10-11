@@ -363,9 +363,17 @@ export function* walkSourceFiles(root, config = {}) {
 export function scanRepository({ root, names = [], config = {} } = {}) {
   const limits = { ...DEFAULT_SCAN, ...(config.scan ?? {}) };
   const wanted = [...new Set(names.filter((n) => typeof n === 'string' && n.length > 0))];
-  const declarations = Object.fromEntries(wanted.map((n) => [n, []]));
-  const references = Object.fromEntries(wanted.map((n) => [n, []]));
-  const similar = Object.fromEntries(wanted.map((n) => [n, []]));
+  // R2-fix: null-prototype symbol indexes. Plain objects inherit constructor/toString/valueOf,
+  // so prototype names misfire as hits and .push throws. Own-key checks below treat every
+  // name (including __proto__/hasOwnProperty) as ordinary data.
+  const declarations = Object.create(null);
+  const references = Object.create(null);
+  const similar = Object.create(null);
+  for (const n of wanted) {
+    declarations[n] = [];
+    references[n] = [];
+    similar[n] = [];
+  }
   const wantedTokens = new Map(wanted.map((n) => [n, new Set(symbolTokens(n))]));
   // Cheap pre-filter: only symbol names sharing a leading or trailing fragment
   // with the query are worth a full token comparison. Keeps the per-file pass
@@ -391,8 +399,8 @@ export function scanRepository({ root, names = [], config = {} } = {}) {
     const lines = text.split(/\r?\n/);
     for (const symbol of extractSymbols(text, rel)) {
       if (index.length < limits.maxIndex) index.push({ name: symbol.name, kind: symbol.kind, path: rel, line: symbol.line });
-      if (declarations[symbol.name]) declarations[symbol.name].push({ path: rel, line: symbol.line, kind: symbol.kind });
-      if (similarKeys.length > 0 && (declarations[symbol.name] === undefined || similar[symbol.name] === undefined)) {
+      if (Object.hasOwn(declarations, symbol.name)) declarations[symbol.name].push({ path: rel, line: symbol.line, kind: symbol.kind });
+      if (similarKeys.length > 0 && (!Object.hasOwn(declarations, symbol.name) || !Object.hasOwn(similar, symbol.name))) {
         const lower = symbol.name.toLowerCase();
         for (const [name, head, tail] of similarKeys) {
           if (symbol.name === name) continue;

@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-11T14:01:33.663Z",
+  "testedAt": "2026-10-11T16:14:46.349Z",
   "nodeVersion": "v24.15.0",
   "cases": [
     {
@@ -102,7 +102,7 @@
       "name": "acceptance 6: missing and stale discovery evidence are distinguishable",
       "pass": true,
       "detail": {
-        "head": "99043e73a0743dd4187a1997952c19d331003f04",
+        "head": "02074a96c28a050f37e85c88770730b441db967d",
         "introduced": [
           {
             "path": "src/new.mjs",
@@ -207,8 +207,8 @@
   "benchmark": {
     "files": 1000,
     "approximateBytes": 2377500,
-    "p50Ms": 496.1,
-    "maxMs": 524.5,
+    "p50Ms": 496.2,
+    "maxMs": 544.2,
     "exactHits": [
       1,
       1,

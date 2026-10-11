@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_8a3580e4-60f4-4af5-8b85-cd959191fdda",
+  "task": "ptc-direct",
+  "intent": "direct write path under policy",
+  "agentId": "dg-addy",
+  "revision": "d0254f2018e3972f55901b13011e6da0acee2f7d",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-b-uIECDQ",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "directApproved"
+  ],
+  "symbolFiles": {
+    "directApproved": "src/direct-approved.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 5,
+    "bytesScanned": 407,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 4,
+    "declarations": {
+      "directApproved": []
+    },
+    "similar": {
+      "directApproved": []
+    },
+    "references": {
+      "directApproved": []
+    }
+  },
+  "at": "2026-10-11T16:15:15.811Z"
+}

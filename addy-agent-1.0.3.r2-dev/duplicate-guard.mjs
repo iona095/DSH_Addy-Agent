@@ -33,7 +33,7 @@ import {
 export const name = 'addy-duplicate-guard';
 export const inject = ['tools', 'systemPrompt'];
 /** Corrective-repair generation marker, surfaced in `status` and the activation log. */
-export const generation = 'r1';
+export const generation = 'r2';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const EVIDENCE_DIR = join(ROOT, 'evidence', 'duplicate-guard');
@@ -325,19 +325,21 @@ export function apply(ctx, config = {}) {
     const declared = new Set(entry.approval.symbols);
     const introduced = entry.introduced.map((s) => s.name);
     const undeclared = introduced.filter((n) => !declared.has(n));
-    let declarations = {};
+    // R2-fix: null-prototype declaration map. Plain {} inherits constructor/toString,
+    // so prototype-colliding introduced names misfire as hits and recheck crashes.
+    let declarations = Object.create(null);
     if (undeclared.length > 0) {
       const scan = scanRepository({ root: entry.root, names: undeclared, config: { ...policy, scan: policy.postcheckScan } });
       declarations = scan.declarations;
     }
     for (const name of introduced) {
-      if (declarations[name] === undefined) {
+      if (!Object.hasOwn(declarations, name)) {
         declarations[name] = dedupeCollisions((entry.approval.collisions ?? []).filter((c) => c.name === name));
       }
     }
     const unacknowledged = [];
     for (const name of introduced) {
-      for (const hit of declarations[name] ?? []) {
+      for (const hit of Object.hasOwn(declarations, name) ? declarations[name] : []) {
         if (hit.path === entry.rel) continue;
         if ((entry.approval.collisions ?? []).some((c) => c.name === name && c.path === hit.path)) continue;
         unacknowledged.push({ name, path: hit.path, line: hit.line });

@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_3f1714b1-1fb2-4e3d-8bc1-29b972905eb7",
+  "task": "shell-approved",
+  "intent": "x",
+  "agentId": "dg-shell-approved",
+  "revision": "ef2123f7d4f3e3c3203986117acd1d36e89c1433",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-UhrUVf",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "shellApproved"
+  ],
+  "symbolFiles": {
+    "shellApproved": "src/shell-approved.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 12,
+    "bytesScanned": 1012,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 6,
+    "declarations": {
+      "shellApproved": []
+    },
+    "similar": {
+      "shellApproved": []
+    },
+    "references": {
+      "shellApproved": []
+    }
+  },
+  "at": "2026-10-11T16:15:07.185Z"
+}
