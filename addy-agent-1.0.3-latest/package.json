@@ -1,0 +1,11 @@
+{
+  "name": "@local/dsh-addy-agent",
+  "version": "1.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Pinned original Addy Agent Skills in an isolated native DSH PTC preset",
+  "exports": { ".": "./index.mjs", "./adapter-v2": "./adapter-v2.mjs", "./duplicate-guard": "./duplicate-guard.mjs", "./duplicate-guard-core": "./duplicate-guard-core.mjs", "./adapter-v2/locale/*.json": "./locale/*.json", "./adapter-v2/icon": "./icon.svg", "./adapter-v1": "./adapter-v1.mjs", "./adapter-v1/locale/*.json": "./locale/*.json", "./adapter-v1/icon": "./icon.svg", "./locale/*.json": "./locale/*.json", "./icon": "./icon.svg" },
+  "files": ["index.mjs", "adapter-v1.mjs", "adapter-v2.mjs", "core.mjs", "core-v2.mjs", "duplicate-guard.mjs", "duplicate-guard-core.mjs", "cordis.patch.yml", "upstream-manifest.json", "upstream", "locale", "icon.svg", "README.md", "VERIFICATION.md", "REPAIR_NOTES.md"],
+  "scripts": { "test": "node --test tests/core.test.mjs" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

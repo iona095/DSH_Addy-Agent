@@ -1,0 +1,8 @@
+# DSH Addy-Agent
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.venv/
+__pycache__/
+# keep everything else — including tests/evidence baselines

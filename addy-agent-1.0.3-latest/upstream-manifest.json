@@ -1,0 +1,1444 @@
+{
+  "repository": "https://github.com/addyosmani/agent-skills",
+  "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+  "runtimeVersion": "0.2.1-alpha.2",
+  "sourcePolicy": "All tracked upstream bytes preserved, including commands, skills, personas, references, hooks and supporting scripts. Adaptation lives outside upstream.",
+  "commands": [
+    {
+      "name": "spec",
+      "path": ".claude/commands/spec.md",
+      "sha256": "82325b4cc75ae2413c7bf4b6f84804eb662935d9df98edab50eef2b39ff904b0",
+      "description": "Start spec-driven development — write a structured specification before writing code"
+    },
+    {
+      "name": "plan",
+      "path": ".claude/commands/plan.md",
+      "sha256": "91d961b2a7011209bc6771c176932e72e11b99d0c524e3f63c9f2e2a94fbc993",
+      "description": "Break work into small verifiable tasks with acceptance criteria and dependency ordering"
+    },
+    {
+      "name": "build",
+      "path": ".claude/commands/build.md",
+      "sha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277",
+      "description": "Implement tasks incrementally — build, test, verify, commit. Add \"auto\" to run the whole plan in one approved pass."
+    },
+    {
+      "name": "test",
+      "path": ".claude/commands/test.md",
+      "sha256": "62f72b64cfac6db984db072fdc987a23e6049876191297da5f37367def986ff2",
+      "description": "Run TDD workflow — write failing tests, implement, verify. For bugs, use the Prove-It pattern."
+    },
+    {
+      "name": "constraints",
+      "path": ".claude/commands/constraints.md",
+      "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171",
+      "description": "Define and enforce this project's quality bar — interview, sane defaults, CONSTRAINTS.md"
+    },
+    {
+      "name": "review",
+      "path": ".claude/commands/review.md",
+      "sha256": "8ad7da75873b430b737328d1bdd95fc8d2de4a4866737087feb4d218abe4e88f",
+      "description": "Conduct a five-axis code review — correctness, readability, architecture, security, performance"
+    },
+    {
+      "name": "webperf",
+      "path": ".claude/commands/webperf.md",
+      "sha256": "74c0c1335f1397a5138a78eda4275e4e5deba16c4537f3a4b4971c3280d0ba27",
+      "description": "Run a web performance audit via the web-performance-auditor persona"
+    },
+    {
+      "name": "code-simplify",
+      "path": ".claude/commands/code-simplify.md",
+      "sha256": "71e9e8d38c5cbab5b7ecff324ed4ea0f1aaa4fd053ea6c2b717f2fbadfb65a91",
+      "description": "Simplify code for clarity and maintainability — reduce complexity without changing behavior"
+    },
+    {
+      "name": "ship",
+      "path": ".claude/commands/ship.md",
+      "sha256": "02d2d0fc10bfb58bb62dcfe22ed396cd2b9f55dced7d5cd92fce6d29f0da4ace",
+      "description": "Run the pre-launch checklist via parallel fan-out to specialist personas, then synthesize a go/no-go decision"
+    }
+  ],
+  "skills": [
+    {
+      "name": "api-and-interface-design",
+      "description": "Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating REST or GraphQL endpoints, defining type contracts between modules, or establishing boundaries between frontend and backend."
+    },
+    {
+      "name": "browser-testing-with-devtools",
+      "description": "Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need to inspect the DOM, capture console errors, analyze network requests, profile performance, or verify visual output with real runtime data. Requires the chrome-devtools MCP server to be configured."
+    },
+    {
+      "name": "ci-cd-and-automation",
+      "description": "Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate quality gates, configure test runners in CI, or establish deployment strategies."
+    },
+    {
+      "name": "code-review-and-quality",
+      "description": "Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a human. Use when you need to assess code quality across multiple dimensions before it enters the main branch. Use when asked to review a diff or a pull request, even when the diff is pasted inline."
+    },
+    {
+      "name": "code-simplification",
+      "description": "Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to read, maintain, or extend than it should be. Use when reviewing code that has accumulated unnecessary complexity."
+    },
+    {
+      "name": "constraint-driven-development",
+      "description": "Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimensions matter, supplies sane default thresholds when they have no number in mind, records everything in CONSTRAINTS.md, and watches the diff for a weakened bar — new @ts-ignore or eslint-disable suppressions, skipped or deleted tests, assertions stripped out, unimplemented stubs, thresholds edited down. Use when no quality bar is written down, when the user says \"set up constraints\" or \"define our standards\", when the user wants dimensions they care about — accessibility, web performance, coverage — set up as enforced constraints, when an agent keeps silencing checks or skipping tests to get to green, when you need a coverage or performance threshold and don't know what number to pick, or when an agent writes more code than anyone will read."
+    },
+    {
+      "name": "context-engineering",
+      "description": "Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, or when you need to configure rules files and context for a project."
+    },
+    {
+      "name": "debugging-and-error-recovery",
+      "description": "Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't match expectations, or you encounter any unexpected error. Use when you need to figure out what broke and why — a systematic approach to finding and fixing the root cause rather than guessing."
+    },
+    {
+      "name": "deprecation-and-migration",
+      "description": "Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementation to another. Use when migrating a database schema in production, such as renaming or dropping a column without downtime (expand/contract). Use when deciding whether to maintain or sunset existing code."
+    },
+    {
+      "name": "documentation-and-adrs",
+      "description": "Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design choice, when changing public APIs, shipping features, or when you need to record context that future engineers and agents will need to understand the codebase."
+    },
+    {
+      "name": "doubt-driven-development",
+      "description": "Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cross-examined before proceeding, when stress-testing a plan for hidden failure modes, when correctness matters more than speed, when working in unfamiliar code, when stakes are high (production auth, security-sensitive logic, a high-stakes migration, irreversible operations), or any time a confident output would be cheaper to verify now than to debug later."
+    },
+    {
+      "name": "frontend-ui-engineering",
+      "description": "Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating components, implementing layouts, meeting WCAG accessibility requirements, managing state, or when the output needs to look and feel production-quality rather than AI-generated."
+    },
+    {
+      "name": "git-workflow-and-versioning",
+      "description": "Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting uncommitted work in a messy working tree into clean atomic commits, opening or reviewing a pull request (PR), pushing to a remote, or when you need to organize work across multiple parallel streams. Use when cutting a release, choosing a semantic version bump, tagging, or writing a changelog."
+    },
+    {
+      "name": "idea-refine",
+      "description": "Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still vague, when you need to stress-test assumptions before committing to a plan, or when you want to expand options before converging on one. Triggers on \"ideate\", \"refine this idea\", or \"stress-test my plan\"."
+    },
+    {
+      "name": "incremental-implementation",
+      "description": "Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one file, or when picking up the next task from a plan. Use when rolling a change out behind a feature flag, when you're about to write a large amount of code at once, or when a task feels too big to land in one step."
+    },
+    {
+      "name": "interview-me",
+      "description": "Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time interview until ~95% confidence about the underlying intent. Use when an ask is underspecified (\"build me X\" without \"for whom\" or \"why now\"), when the user explicitly invokes (\"interview me\", \"grill me\", \"are we sure?\", \"stress-test my thinking\"), or when you catch yourself silently filling in ambiguous requirements before any plan, spec, or code exists."
+    },
+    {
+      "name": "observability-and-instrumentation",
+      "description": "Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use when shipping any feature that runs in production and you need evidence it works. Use when production issues are reported but you can't tell what happened from the available data."
+    },
+    {
+      "name": "performance-optimization",
+      "description": "Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when you suspect performance regressions, when Core Web Vitals or load times need improvement, when N+1 query patterns need fixing, or when profiling reveals bottlenecks."
+    },
+    {
+      "name": "planning-and-task-breakdown",
+      "description": "Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Use when a task feels too large to start, when you need to estimate scope, or when parallel work is possible."
+    },
+    {
+      "name": "security-and-hardening",
+      "description": "Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentication, data storage, or external integrations, or when checking a login flow is safe against the OWASP Top Ten. Use when building any feature that accepts untrusted data, manages user sessions, or interacts with third-party services. Use when auditing dependencies for known vulnerabilities, triaging package-manager audit findings, or assessing supply-chain risk in a new package. Use when personal data or privacy compliance (GDPR, CCPA) is involved."
+    },
+    {
+      "name": "shipping-and-launch",
+      "description": "Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping. Use when you need a pre-launch checklist, when setting up monitoring, when planning a staged rollout, or when you need a rollback strategy."
+    },
+    {
+      "name": "source-driven-development",
+      "description": "Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs before implementing it, or when you want authoritative, source-cited code free from outdated patterns. Use when building with any framework or library where correctness matters."
+    },
+    {
+      "name": "spec-driven-development",
+      "description": "Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use when drafting a PRD or requirements document with objectives and scope, or when requirements are unclear, ambiguous, or only exist as a vague idea. Use when a single requirement spans several independently testable capabilities and needs decomposing into a capability map of modules before specifying."
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Drives development with tests using the red-green-refactor loop. Use when implementing any logic, fixing any bug, or changing any behavior. Use when you need to prove that code works, when a bug report arrives, or when you're about to modify existing functionality."
+    },
+    {
+      "name": "using-agent-skills",
+      "description": "Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the piece of work at hand. This is the meta-skill that governs how all other skills are discovered and invoked."
+    }
+  ],
+  "personas": [
+    "code-reviewer",
+    "security-auditor",
+    "test-engineer",
+    "web-performance-auditor"
+  ],
+  "files": [
+    {
+      "path": ".agents/plugins/marketplace.json",
+      "gitBlob": "d286970e80af1927734e8f78c0ebc4a8149413fa",
+      "sha256": "9e0f72d43e89efea2f8e8576d48837ef50a95b992273f27fa739c8c06e440f3a",
+      "bytes": 536
+    },
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "gitBlob": "6011aff0657d206b572fba4ff90c49e2b8ca1749",
+      "sha256": "35e019b1d4b67cd6c226d8305b0816989f28e57320334c30a5bd704b582e5278",
+      "bytes": 857
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "gitBlob": "89d096a8070ad84bc8968d9a6dd185347719b8c9",
+      "sha256": "1201b5a7cbe5e123689a2172384c43c8eddbdc929c2e29789ccd9ea6762a40c3",
+      "bytes": 517
+    },
+    {
+      "path": ".claude/commands/build.md",
+      "gitBlob": "2233d909b396296eb3da7b0a50aab4a9954f92fe",
+      "sha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277",
+      "bytes": 3959
+    },
+    {
+      "path": ".claude/commands/code-simplify.md",
+      "gitBlob": "f914bc81be9b6c8474e88cb7774aef1054957c0b",
+      "sha256": "71e9e8d38c5cbab5b7ecff324ed4ea0f1aaa4fd053ea6c2b717f2fbadfb65a91",
+      "bytes": 1068
+    },
+    {
+      "path": ".claude/commands/constraints.md",
+      "gitBlob": "4f5bb054e15d35145cce5a7b422f3882734dd859",
+      "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171",
+      "bytes": 2762
+    },
+    {
+      "path": ".claude/commands/plan.md",
+      "gitBlob": "96d8cc9bcb8ace4170a79ea3f24af83737e0ff97",
+      "sha256": "91d961b2a7011209bc6771c176932e72e11b99d0c524e3f63c9f2e2a94fbc993",
+      "bytes": 805
+    },
+    {
+      "path": ".claude/commands/review.md",
+      "gitBlob": "c1d750c8e55d63cb31fa6470a16483a8328f5979",
+      "sha256": "8ad7da75873b430b737328d1bdd95fc8d2de4a4866737087feb4d218abe4e88f",
+      "bytes": 846
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "gitBlob": "1dfaf016cf1212400bf11e66c87980d5fb460aca",
+      "sha256": "02d2d0fc10bfb58bb62dcfe22ed396cd2b9f55dced7d5cd92fce6d29f0da4ace",
+      "bytes": 4601
+    },
+    {
+      "path": ".claude/commands/spec.md",
+      "gitBlob": "fc0941975d040ba0fa51690cfb9500bee7829f6c",
+      "sha256": "82325b4cc75ae2413c7bf4b6f84804eb662935d9df98edab50eef2b39ff904b0",
+      "bytes": 913
+    },
+    {
+      "path": ".claude/commands/test.md",
+      "gitBlob": "a2b9cfd8444e221880b23a290e8db15256089c61",
+      "sha256": "62f72b64cfac6db984db072fdc987a23e6049876191297da5f37367def986ff2",
+      "bytes": 665
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "gitBlob": "ed27d22a4498f938c8b9b0e7575a1677c0f26f19",
+      "sha256": "74c0c1335f1397a5138a78eda4275e4e5deba16c4537f3a4b4971c3280d0ba27",
+      "bytes": 1974
+    },
+    {
+      "path": ".claude/rules/skills-contributing.md",
+      "gitBlob": "8553dc3b0d4aba42f014605b488097b6e06e9060",
+      "sha256": "6f8ff659388c3b957322ac46f788ff16d996e5c751f71a6c1e59e4761c437bbd",
+      "bytes": 988
+    },
+    {
+      "path": ".codex-plugin/plugin.json",
+      "gitBlob": "1d85feec14064b756f076ef4f5c0b7bbfa03e430",
+      "sha256": "5e0b63fb3873f9b50f91bc12e92ad10fa0595e3efa22f89a44e6f0f0ffbde781",
+      "bytes": 1120
+    },
+    {
+      "path": ".gemini/commands/build.toml",
+      "gitBlob": "b7a4f7f1f6ab193c3abb75690bb9df7a88024371",
+      "sha256": "e25857cf424905bceea7f1250903eb801a8e79ed62ec67c2fd4d785969e47e62",
+      "bytes": 3840
+    },
+    {
+      "path": ".gemini/commands/code-simplify.toml",
+      "gitBlob": "518dd3ba989fd4e1a76929356a75c4ed8db73128",
+      "sha256": "5216ae4dc14077d1ac7f9b1d201972955909302eb7c0b63682e057f86a49c745",
+      "bytes": 1066
+    },
+    {
+      "path": ".gemini/commands/constraints.toml",
+      "gitBlob": "c6bbb8570dc71aec73527f60996c56c7b8450078",
+      "sha256": "149ae460288b1f86487bb842ea5cf3476cdb2766a3f703985d83499cf8f6c817",
+      "bytes": 2775
+    },
+    {
+      "path": ".gemini/commands/planning.toml",
+      "gitBlob": "53a88075533c6b8b2933a48b4ca92e9d1da49be7",
+      "sha256": "8245744d68ada00751413feca49bca457689b4a25aba76be952f5e7a0be066f7",
+      "bytes": 804
+    },
+    {
+      "path": ".gemini/commands/review.toml",
+      "gitBlob": "23f5b78c63192a8a25ec069cb7f710639b669b45",
+      "sha256": "a7ae7259a9e080731e0dd91368da728b89919d31488192e067b751cf472d5a8d",
+      "bytes": 844
+    },
+    {
+      "path": ".gemini/commands/ship.toml",
+      "gitBlob": "af4a2a9b40c6a91b70c073446ae653b0cee0c119",
+      "sha256": "7018889ee96cd5e198fee199fdf7bc8a5af6fa5e57d575d74a6d94837dd7a101",
+      "bytes": 4780
+    },
+    {
+      "path": ".gemini/commands/spec.toml",
+      "gitBlob": "799f682b0fe450bade82da5b63a51d7817f22acd",
+      "sha256": "ef26c247995ff2cdacf8e0474e3b7433b0a851c258ba33a626da6525f842af8d",
+      "bytes": 911
+    },
+    {
+      "path": ".gemini/commands/test.toml",
+      "gitBlob": "73e36f53ed289bc01d24a69c89907e32605fb519",
+      "sha256": "c54f004d67f9fd4f8a5c9ab753ef99d3dd3d12cdc304473ea61db8c8680fe84d",
+      "bytes": 650
+    },
+    {
+      "path": ".gemini/commands/webperf.toml",
+      "gitBlob": "af0ab105b1282bc2c5d00e91f7cb4261686e0b3e",
+      "sha256": "5b08fc19bacdb0f9984e9225a2c7913cef51249c9472f51169efa5a83f53a60b",
+      "bytes": 1884
+    },
+    {
+      "path": ".gitattributes",
+      "gitBlob": "6313b56c57848efce05faa7aa7e901ccfc2886ea",
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+      "bytes": 19
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/skill-gap.yml",
+      "gitBlob": "dac6216a5ace3cd1f34bb2b9a753c6f133592892",
+      "sha256": "f6a7748bfe8a1a43c42c7a5e7317c66689b66afd514ee091eb6f8ce07e46d5a4",
+      "bytes": 2669
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "gitBlob": "b25ba319a8d371c6c1924f8b75173bb319313ab2",
+      "sha256": "fe1437efbdd99bd9ea1fa2bf79aa921f8bdd68a067802e4b41af531a3aa39597",
+      "bytes": 4791
+    },
+    {
+      "path": ".gitignore",
+      "gitBlob": "167e5ad35e10c75795667a7b71c950eda641cdd8",
+      "sha256": "09bc8ca679551d8d723abeaadf303f3dcdaf93b94d0ad211873942a47c8559a2",
+      "bytes": 143
+    },
+    {
+      "path": ".opencode/skills",
+      "gitBlob": "7fc7d9f7be858ee62e454c529b3f8deddd83e1d2",
+      "sha256": "9d36d6a253d6844eb107d26dc0dcd8252808449433b251eceb14cee3517a185a",
+      "bytes": 10
+    },
+    {
+      "path": "AGENTS.md",
+      "gitBlob": "e97670ed868e90b73753fafbe305cdabc7f55ad3",
+      "sha256": "a12bac68c447f8043a75c2259175b36a57a37617a5ab92900ab1e3e9afa381be",
+      "bytes": 5386
+    },
+    {
+      "path": "CLAUDE.md",
+      "gitBlob": "97674d0b173c7c25764e11dc816a298a63119594",
+      "sha256": "f03b7aaf2c08ab93e70a020442634a09f518286ff1beb7b8353dde92533ff9b0",
+      "bytes": 4094
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "gitBlob": "3c3a015be673a04efd8647c201acfbb2fad7189a",
+      "sha256": "fe5d17011565e9cfeb8a02510c81a243f3e4d829b800e2eab239039fcac214e7",
+      "bytes": 9404
+    },
+    {
+      "path": "LICENSE",
+      "gitBlob": "d67778ada6b9cda6227e9130da182c13e73c8b2e",
+      "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7",
+      "bytes": 1068
+    },
+    {
+      "path": "README.md",
+      "gitBlob": "fd5d76fdd774c0d7437e8b59cd1f884a5ece9a25",
+      "sha256": "1721f3d97679a2d7e6208e7f9af3ed891a4dd29de9a56ccbb6fd7d971cb8c9d4",
+      "bytes": 25768
+    },
+    {
+      "path": "agents/code-reviewer.md",
+      "gitBlob": "156c0908dbd626ac99bbc9394128e37a773ae634",
+      "sha256": "2d02acb9db1c37521d676587d2e0afb713c8983de957a78efdfa82d27e5fc3da",
+      "bytes": 3995
+    },
+    {
+      "path": "agents/security-auditor.md",
+      "gitBlob": "efb1e4e51d12229e5d6792780f997467d4ea3697",
+      "sha256": "66a3f68f1c691b600ddb44e88afb138e239d0572df37be84e1f9a427c887dd0a",
+      "bytes": 4992
+    },
+    {
+      "path": "agents/test-engineer.md",
+      "gitBlob": "19a41bad30cc25681754352d11d97f95ce25b2b0",
+      "sha256": "c4acde91d6307d88515387344a129a2d0679134e587596c3517d73faffcd5aa6",
+      "bytes": 3275
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "gitBlob": "44bc45d807fa6aa59c001741dec499ddb27122c6",
+      "sha256": "0928b1cf8103262a364bce0c1fc689a918852e2275441f1b2e687adfa1e607e9",
+      "bytes": 12278
+    },
+    {
+      "path": "commands/build.toml",
+      "gitBlob": "b7a4f7f1f6ab193c3abb75690bb9df7a88024371",
+      "sha256": "e25857cf424905bceea7f1250903eb801a8e79ed62ec67c2fd4d785969e47e62",
+      "bytes": 3840
+    },
+    {
+      "path": "commands/code-simplify.toml",
+      "gitBlob": "926442b958f1f89b2b5ecdc04b4b79896b4dbf2b",
+      "sha256": "640cdd34c26a04cabe6d3ea64ba5aad91bb68b16c8f7619a9e5fae6fe0a37ec8",
+      "bytes": 1066
+    },
+    {
+      "path": "commands/constraints.toml",
+      "gitBlob": "409b0093771929a20a91670d53cd057db712f4da",
+      "sha256": "bcc519db853a0ebdf0b07f378e2bc87cb112508d28e41f0d39dd1b17aa68def4",
+      "bytes": 2775
+    },
+    {
+      "path": "commands/planning.toml",
+      "gitBlob": "53a88075533c6b8b2933a48b4ca92e9d1da49be7",
+      "sha256": "8245744d68ada00751413feca49bca457689b4a25aba76be952f5e7a0be066f7",
+      "bytes": 804
+    },
+    {
+      "path": "commands/review.toml",
+      "gitBlob": "23f5b78c63192a8a25ec069cb7f710639b669b45",
+      "sha256": "a7ae7259a9e080731e0dd91368da728b89919d31488192e067b751cf472d5a8d",
+      "bytes": 844
+    },
+    {
+      "path": "commands/ship.toml",
+      "gitBlob": "bf0a77647e3c67eea7a5a65f496e857f403b336f",
+      "sha256": "a067c5c4ea484609ceb530b908c7fb707f184abae839826012ddca653517c1c5",
+      "bytes": 4712
+    },
+    {
+      "path": "commands/spec.toml",
+      "gitBlob": "799f682b0fe450bade82da5b63a51d7817f22acd",
+      "sha256": "ef26c247995ff2cdacf8e0474e3b7433b0a851c258ba33a626da6525f842af8d",
+      "bytes": 911
+    },
+    {
+      "path": "commands/test.toml",
+      "gitBlob": "73e36f53ed289bc01d24a69c89907e32605fb519",
+      "sha256": "c54f004d67f9fd4f8a5c9ab753ef99d3dd3d12cdc304473ea61db8c8680fe84d",
+      "bytes": 650
+    },
+    {
+      "path": "commands/webperf.toml",
+      "gitBlob": "3532ec69d198a5d0b7e24920f50cb3e21dd41cc0",
+      "sha256": "a7ff4a4ab3c3e20e22edb7582542264813f2c6c11c9687878f3ff9f6e5b529be",
+      "bytes": 2031
+    },
+    {
+      "path": "docs/adoption-guide.md",
+      "gitBlob": "e636b824f97c964a0bac7ae3a5f5da036513e1f0",
+      "sha256": "e8cf338ae5762bf93bb48b04eac986bf7307cea702ff87180a0983b33473bcf5",
+      "bytes": 11566
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "gitBlob": "d06a87b7cec0c657ee321fbcd8d910d074ee5954",
+      "sha256": "93b2a53ca052b5e24b7382caf9438abdae7d511d7b16aedf71f35e36e9adc60d",
+      "bytes": 7110
+    },
+    {
+      "path": "docs/agents.md",
+      "gitBlob": "414177ba07273eb3db25e24d6cdba2fb03b71c0e",
+      "sha256": "e03481592a725146ed48ee22010086dcfebd1faf1373cb99e7f2ed4d2100275c",
+      "bytes": 6996
+    },
+    {
+      "path": "docs/antigravity-setup.md",
+      "gitBlob": "ac0e46113cb049da5ced3bcdae3561c9d5280af4",
+      "sha256": "1a47959d542ec6008ef9f20bf20fdf8ac9c309157c9cc3bfd42f888b606af3ea",
+      "bytes": 6613
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "gitBlob": "25e25e0db60c0755260a1a73be058e453cc4c96c",
+      "sha256": "d6d491303d37020b51ddc0417fe3e7ea119518fa892deda07602d64f93d9fa8a",
+      "bytes": 2447
+    },
+    {
+      "path": "docs/commandcode-setup.md",
+      "gitBlob": "0150adc6e92f119e5101966a4784c0079560e4d1",
+      "sha256": "6305e672cd15c1dd709d7a2b307dca4bbf2704328654f8b3a5f37c495d3cf31c",
+      "bytes": 2437
+    },
+    {
+      "path": "docs/comparison.md",
+      "gitBlob": "2c51daa6f47bb2896e91b4197279d44f8cd45f42",
+      "sha256": "652e4df31f4bc1e1d456db768ee15c6cc5fdd6dee754d9dfccffe5ce1eac7194",
+      "bytes": 15362
+    },
+    {
+      "path": "docs/copilot-cli-setup.md",
+      "gitBlob": "06e3f5264eafd6b19b02b454fb4f5140f1a11122",
+      "sha256": "5ecb11fa4f8b1d8bfd94f9f66f6e50037e8241fca34b3cbc598aee78f96762a9",
+      "bytes": 3390
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "gitBlob": "b33d111c222348bb4d70aba64a8987454089c7e9",
+      "sha256": "46f1f46c4c1f4f656b1725271692e686e6f2e10ca977b526ea4f932497ecb209",
+      "bytes": 11478
+    },
+    {
+      "path": "docs/cursor-setup.md",
+      "gitBlob": "1b3c24fe3da6efd5cfa0b6f7ae1fa4080b312ea8",
+      "sha256": "f775d97d834c1de09c2e83c011c1ff5b9fba0f9c38e03e188f5aff48ba1dada6",
+      "bytes": 9120
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "gitBlob": "daaf22815e3a1d3cf0eb57716ddd527f077d4205",
+      "sha256": "59a35b68045f34aa42161bc5901892489e6ecdac4b5bbfcf311fde65f8255eea",
+      "bytes": 7850
+    },
+    {
+      "path": "docs/gemini-cli-setup.md",
+      "gitBlob": "8b13aa6b40ec95a23cfe728ba8f42045680528c7",
+      "sha256": "72fd36e321b76a6ed2799faba2357e0afc22349b07bbe91da4470808f1642409",
+      "bytes": 5877
+    },
+    {
+      "path": "docs/getting-started.md",
+      "gitBlob": "f09e0cf0632a5b2cb9e7eaa03694a866c92d52e5",
+      "sha256": "eb8601e481a3dc237bf76e38521e47f3dfc950f153836754a23302abca64b989",
+      "bytes": 11199
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "gitBlob": "354097f8be0d5e3cf3b05fd8299ec4e35b99234a",
+      "sha256": "77a6bd91ef2837acb96feea4ae60f3bfea2c4155864c197394dd2166f49de864",
+      "bytes": 9547
+    },
+    {
+      "path": "docs/other-hosts.md",
+      "gitBlob": "b7c1a5e868fc6f1bd6d7570b6573a9d48012676a",
+      "sha256": "8269a198ac91a2a512e053066089a59613333101f835c6df259802b1683b41b2",
+      "bytes": 934
+    },
+    {
+      "path": "docs/skill-anatomy.md",
+      "gitBlob": "04e493326aa5f7ea8b87ce5ca8de9925147a802b",
+      "sha256": "5d2276c169c713e280bdbc4dcad41f20f4d5f7c5a8f09f9ee834eb1252a60df4",
+      "bytes": 11244
+    },
+    {
+      "path": "docs/windsurf-setup.md",
+      "gitBlob": "c640e48ed73082614b0b01785e7c8d425ce3e1d4",
+      "sha256": "1410af016060047d1a265365f8d98aadd00a58bcfa2a048edec06d61d337cd97",
+      "bytes": 1471
+    },
+    {
+      "path": "evals/README.md",
+      "gitBlob": "4f501cdb0da265812458c43f2bc433b056fb357b",
+      "sha256": "3b8c8464a6b13afb5f1ed6f18d68ad02e21bd623446c71c4918039a8db32436e",
+      "bytes": 12079
+    },
+    {
+      "path": "evals/cases/api-and-interface-design.json",
+      "gitBlob": "c730e83efcfe726b553b61410b87a9b27d3cf068",
+      "sha256": "b297745de905b4b40845551acb19c4f91e66141cb1231fda1b760f5abfb157a3",
+      "bytes": 1494
+    },
+    {
+      "path": "evals/cases/browser-testing-with-devtools.json",
+      "gitBlob": "3e35e55944b45bb6816cbb011f14bc0bfaf1b5fb",
+      "sha256": "0d670cbe54814c4cc1dbc8eb8aa1d5233a2130493b85eb69488dd2e8e3c7f8bf",
+      "bytes": 1455
+    },
+    {
+      "path": "evals/cases/ci-cd-and-automation.json",
+      "gitBlob": "1d4a300a39fc5e38ed43af056de46150bd9c3214",
+      "sha256": "96676c94258e2ce3e6df37c7488c2ba6b47e51563e6e4a7d903c2296ae766bf9",
+      "bytes": 1349
+    },
+    {
+      "path": "evals/cases/code-review-and-quality.json",
+      "gitBlob": "b4a0dab80aaaad294189045f356d33a6ae3545b7",
+      "sha256": "d2fb82e1ed0cf1c2cca041473e4e9b60978cda4d1698c37be8bfee97b1ec3c94",
+      "bytes": 1506
+    },
+    {
+      "path": "evals/cases/code-simplification.json",
+      "gitBlob": "34d29695c0bfd38d5096b258a3c30200ead2060f",
+      "sha256": "58a249859f309c01428264d6cb28ff73d932665fafe8d491a3b3ec8888a89ee3",
+      "bytes": 1377
+    },
+    {
+      "path": "evals/cases/constraint-driven-development.json",
+      "gitBlob": "3fae3aba43ba055f07b79cc1c397d6a262713ef2",
+      "sha256": "45bb9aa099816de69a42147e0f217ffd03e8c6d97d4599a44ae40dec4d95625e",
+      "bytes": 3353
+    },
+    {
+      "path": "evals/cases/context-engineering.json",
+      "gitBlob": "efb5e28c1a4dce2fde5dfc63c9dfdfe7b814d5c7",
+      "sha256": "38dd00d2f108fe1cb703d5a01dbb2310d6f3719cf32950bc2f9adbeabfb9c617",
+      "bytes": 1390
+    },
+    {
+      "path": "evals/cases/debugging-and-error-recovery.json",
+      "gitBlob": "f6a12cddf6c41378d9f11ba4d55e47e2cddde3a7",
+      "sha256": "a7b0cfb380dfce578305913d7376426ad9ee78beb51a31a19b4d52ea7b3a86be",
+      "bytes": 2078
+    },
+    {
+      "path": "evals/cases/deprecation-and-migration.json",
+      "gitBlob": "3e38e79fb246ce29a6f572663db145f28a54a363",
+      "sha256": "2dd8c0c880789f7602919e588a3a705440772516f0d5f2a03be98f9f6e9962c8",
+      "bytes": 1502
+    },
+    {
+      "path": "evals/cases/documentation-and-adrs.json",
+      "gitBlob": "1ea78028470e457132854b23d882654e766306e0",
+      "sha256": "d1769ad4f57098d0ce777dafe9a4afcaea7ca1b25296d7e2d5f89e2b07e191b8",
+      "bytes": 3138
+    },
+    {
+      "path": "evals/cases/doubt-driven-development.json",
+      "gitBlob": "bbac62a33a3a23e0a44b8aa7ada0098f6d5c05c6",
+      "sha256": "902241ff4b7fd7594b90bd79667080c31d0c8152d4bd163e67369581060dea38",
+      "bytes": 1322
+    },
+    {
+      "path": "evals/cases/frontend-ui-engineering.json",
+      "gitBlob": "134a76903829c31e60cd48a26cfd9f6ca5a8d4a4",
+      "sha256": "53af60e427ef4f0b8348d125ad0e0c7a56a8e518511ee3783838439299034718",
+      "bytes": 1478
+    },
+    {
+      "path": "evals/cases/git-workflow-and-versioning.json",
+      "gitBlob": "c6b5aa0873c7fc1b5eb45936a92a41d04a155c70",
+      "sha256": "d89f00dcf6164edc74e721272259db4423c9ea59dd73aecd6202194aeb716a75",
+      "bytes": 1272
+    },
+    {
+      "path": "evals/cases/idea-refine.json",
+      "gitBlob": "fb384b09832e930f6de27dafcb91f5963d24b53b",
+      "sha256": "559741e57427aca454ce9546df49771c1929208f5b3a89974ddc76ed0a15a224",
+      "bytes": 1269
+    },
+    {
+      "path": "evals/cases/incremental-implementation.json",
+      "gitBlob": "5829a0d8e0317234e9520f391c959ffdaeb95301",
+      "sha256": "3f40c3955e0cccd725711818da2c4e3eac5c6eff0129afadea5cf8b74e558813",
+      "bytes": 1942
+    },
+    {
+      "path": "evals/cases/interview-me.json",
+      "gitBlob": "568fa8954b5a127f95a01a4f27a359113e3d6487",
+      "sha256": "5fcd623b845d367ac360776008cee6d6bebec60bb2f16c175e5410424794886d",
+      "bytes": 1197
+    },
+    {
+      "path": "evals/cases/observability-and-instrumentation.json",
+      "gitBlob": "296cf60405425230e5928a73a36cbf47a4639937",
+      "sha256": "67e03c0bdd5d0ba53d45fbca244737519973cfacabaa2ffde0bc26840321c125",
+      "bytes": 1278
+    },
+    {
+      "path": "evals/cases/performance-optimization.json",
+      "gitBlob": "4df2f68e8cc13d9535f3a05b480fb0cf0b4d9299",
+      "sha256": "cf861c034b311f807d0c266703569f3384acbacc7f9f2c18aea2c49cab33644f",
+      "bytes": 1688
+    },
+    {
+      "path": "evals/cases/planning-and-task-breakdown.json",
+      "gitBlob": "489690c0e4d4cbb417bab1643a3a1e985a10ee03",
+      "sha256": "2c0e95c8c2e1f1a9a6f062511c9fb615188ccd338b43225ce50dbdf11fa06b02",
+      "bytes": 1276
+    },
+    {
+      "path": "evals/cases/security-and-hardening.json",
+      "gitBlob": "725a3a334b7a48d8c91d2b02308a9a47a2199e30",
+      "sha256": "fa093a308ff28241a89a36d968456f0d7dc497bb42694475ab4b5cc4ea1f892b",
+      "bytes": 1555
+    },
+    {
+      "path": "evals/cases/shipping-and-launch.json",
+      "gitBlob": "8f205fa844a18e144b0fd6dc2950710dd713e9f3",
+      "sha256": "951445b40249b014e0daab37343fdbd18e9bc54fd3b0b8f30d7260fda6931436",
+      "bytes": 1816
+    },
+    {
+      "path": "evals/cases/source-driven-development.json",
+      "gitBlob": "b58864578587a7a229f31842f778b7f47c05523a",
+      "sha256": "df9c000800d1c7e3f46012ee7b6de07b67d1af8e98917921130cc3accc072464",
+      "bytes": 1287
+    },
+    {
+      "path": "evals/cases/spec-driven-development.json",
+      "gitBlob": "2e9a04d478b41d1c00fc1afeee32f80a8a033fca",
+      "sha256": "e6e637aad5de3e7dcec37ba6a3ae4ccf5f4394057a5a2266efb3e5f224ca719c",
+      "bytes": 2657
+    },
+    {
+      "path": "evals/cases/test-driven-development.json",
+      "gitBlob": "ab6ddd00871ce7535e99f538439f2afe51c92721",
+      "sha256": "b038011ea007a91aee8b92cb0fca7493c92f4027e2a6560d674bb4977fe4bf56",
+      "bytes": 3981
+    },
+    {
+      "path": "evals/cases/using-agent-skills.json",
+      "gitBlob": "bf873612a37d9ac5d417a40ffd70b63760131f0e",
+      "sha256": "c8bb35aac322368825b7d35700250361ead8f146b5e556a756d46bca058457d2",
+      "bytes": 1262
+    },
+    {
+      "path": "evals/fixtures/api-and-interface-design/service-brief.md",
+      "gitBlob": "4d1c8f290798087525d125ba4e4441502ff56e53",
+      "sha256": "1542195d78e4cce6c86cbdc7d69c45826f09b02ca50396d8a5c9675b837cbc77",
+      "bytes": 693
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/README.md",
+      "gitBlob": "4cf61e4d4f801feefdede6657c22683decd23579",
+      "sha256": "62cef5542b63ce4fbd36230bf56d5ce96a641858e153d577124fca0991adae76",
+      "bytes": 186
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/index.html",
+      "gitBlob": "29c88cfb280529c771c4c150b0b6edcb2488b891",
+      "sha256": "1e5fbf6fa6ce365eec1ddd0e1a21fc0b7f76a8506fc3119c6059a4d192defc06",
+      "bytes": 869
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/server.js",
+      "gitBlob": "53c271786155b7f29ad4e51e3b063c1471e8ad52",
+      "sha256": "0b35e5dbb0226bb26d69bd7a71c3c1575b1182f2c071e10e46c863533e1be1f6",
+      "bytes": 511
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/package.json",
+      "gitBlob": "27051892330aa764718667704b029cbdd95d8bf7",
+      "sha256": "9e9e19c20f0c6da962c516816d89bad3dc6492e5b5a9c1051bfa8fe9d5b28be5",
+      "bytes": 132
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/src/slug.js",
+      "gitBlob": "9c87193f2d06086517239c41249133af497465a2",
+      "sha256": "595429bcb045f7ec9d41e40b4ed4102e07a57240e7f2c333eaa794e2a9465ade",
+      "bytes": 93
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/test/slug.test.js",
+      "gitBlob": "66898b14575c6e123d3da6a00a57418238b55593",
+      "sha256": "37a5f448038860ec9e0a5028e664588873954489a4665802c2d894a1c9bbc118",
+      "bytes": 234
+    },
+    {
+      "path": "evals/fixtures/code-review-and-quality/user-search.diff",
+      "gitBlob": "d83e015fed84dfd39d2dfe3ffad4abae9a9707e4",
+      "sha256": "1bc7174d5af1af50da323ba653203743c3c148b3f6c07938bd02f5139a368151",
+      "bytes": 513
+    },
+    {
+      "path": "evals/fixtures/code-simplification/config-parser.js",
+      "gitBlob": "4e7c7389fc4f97998c9e98a03d96917910ee73e6",
+      "sha256": "faa41a2c12ccdb8962fbf2ff9e374fcc1850494b0731596813a449c876e0d88f",
+      "bytes": 1592
+    },
+    {
+      "path": "evals/fixtures/code-simplification/config-parser.test.js",
+      "gitBlob": "784a043f53fb97920239a1d02b1e6e2f984648c3",
+      "sha256": "3ea15c84061c001ab4c0c366ad60efeac07b32a80deb9bf608d9a68b8a4df8c4",
+      "bytes": 452
+    },
+    {
+      "path": "evals/fixtures/context-engineering/context-audit.md",
+      "gitBlob": "0e704f5759e6e9a46567bb33bf7140eaa7939329",
+      "sha256": "48130238edcf4ee51632c173de6b4bb53868ba935c4f70bceae7913490e7dd8e",
+      "bytes": 653
+    },
+    {
+      "path": "evals/fixtures/debugging-and-error-recovery/pagination.js",
+      "gitBlob": "a8a2ed81c354cc812062eb412df4923d4714ef0f",
+      "sha256": "a60cc6ec6570f6ef27882cbc4855991d5c3f2c485722931556e549a2fba6d510",
+      "bytes": 172
+    },
+    {
+      "path": "evals/fixtures/debugging-and-error-recovery/pagination.test.js",
+      "gitBlob": "5e6e5d269a4ea35bcb9d4ec1be73493242fb0f7c",
+      "sha256": "d6a38c2c616961536b53fbebc3c7d9d46ad4311d382b3123a2700277f9bbc1ca",
+      "bytes": 290
+    },
+    {
+      "path": "evals/fixtures/debugging-and-error-recovery/time-pressure.md",
+      "gitBlob": "04afc7ccc9efcd0702b4b77c7d1694a07c2fa91d",
+      "sha256": "9d3ef909c46f515e9219dd4f4037d74caaf3754785754d9f9b6053aaf7671e6f",
+      "bytes": 276
+    },
+    {
+      "path": "evals/fixtures/deprecation-and-migration/api-inventory.md",
+      "gitBlob": "41c92d7f5ea05c84a5a608ea544f8a57e8340818",
+      "sha256": "ac739ed01a61c7dea2e9ce570948cfe5443fce471fe8e3d894bb42c82a7ca6c2",
+      "bytes": 504
+    },
+    {
+      "path": "evals/fixtures/documentation-and-adrs/decision-context.md",
+      "gitBlob": "a3c072e66ea56ccf8a3e952847a34a272f94810a",
+      "sha256": "d7c35e0ff7c16b0716076df5513d18fe3569c0ea32d5756295ae0d47c8ec6de2",
+      "bytes": 757
+    },
+    {
+      "path": "evals/fixtures/documentation-and-adrs/prose-review/README.md",
+      "gitBlob": "e8b65f2cc9e9cbfe7f821cb7883c14513009b826",
+      "sha256": "52973ef7a5ffc9ae42d429fafa10697855ae587f21e31f3828b19e40f291c522",
+      "bytes": 663
+    },
+    {
+      "path": "evals/fixtures/documentation-and-adrs/prose-review/queue.js",
+      "gitBlob": "7c6dda6b71dbd1d0d1d877710e805481519e09b1",
+      "sha256": "1e908569b3ee252b7999b0e06719b86c4b25e50d229e68190f20c2598759d976",
+      "bytes": 838
+    },
+    {
+      "path": "evals/fixtures/doubt-driven-development/migration-plan.md",
+      "gitBlob": "966b8a45cafb74746fd103d79af5af8b3574945c",
+      "sha256": "544a19cd5387e2cd5e4968ba722eba3395cd949b815508e06f2181ccbfc1cc94",
+      "bytes": 672
+    },
+    {
+      "path": "evals/fixtures/frontend-ui-engineering/Button.tsx",
+      "gitBlob": "9f3b65357cddb2b8c9d3b36117f58fbe30ff35d9",
+      "sha256": "9acf939db2b4e31c4408d3d4e88c5b994e170fe63897b02e31ae163bb1542967",
+      "bytes": 306
+    },
+    {
+      "path": "evals/fixtures/frontend-ui-engineering/design-system.md",
+      "gitBlob": "858eaeb730e655855b8ecf43587363f2475c6b94",
+      "sha256": "10c2d3e53e438a8200dcf83b11d6663d846a47ae9cd458d0c5ddd6950fda6f9f",
+      "bytes": 530
+    },
+    {
+      "path": "evals/fixtures/git-workflow-and-versioning/.eval/working-tree.patch",
+      "gitBlob": "8a824478b3612ceddd61f1b5d007ca7c688cb052",
+      "sha256": "35ee3634734174e83b65560960f64de82b7d08d22dd55e1a196f58837cd507d8",
+      "bytes": 571
+    },
+    {
+      "path": "evals/fixtures/git-workflow-and-versioning/app.js",
+      "gitBlob": "54ac07ede08a87f064b2e9d415a76ca7d76bf449",
+      "sha256": "7b3e1eaff08d25c39557d329089eb6667164853747f60acbfd8379a30803369f",
+      "bytes": 129
+    },
+    {
+      "path": "evals/fixtures/git-workflow-and-versioning/app.test.js",
+      "gitBlob": "df7152575b903f55cfeb208684b783c50bb268e1",
+      "sha256": "28c9dec73e578a6cf28ab39cdb31f33d0734d28413a3f419ba1b51578867f7ff",
+      "bytes": 228
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation-pressure/draft-export.js",
+      "gitBlob": "b91bd66c625d111d8dc13623c620449d7f401bdd",
+      "sha256": "3b53d3b84815075de1671ea3d38d6e8f15b223b972615ecc7bc13439a80e373a",
+      "bytes": 552
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation-pressure/scenario.md",
+      "gitBlob": "1df89a9d4020db44f0d9b495acac17872849e97f",
+      "sha256": "f211ab173978562ed8b3521aa99fbf4a01e3e0b5bd60547874ba09142284cf15",
+      "bytes": 419
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation/reports.js",
+      "gitBlob": "e7cabbe7e47b41429fd050f840a89c485768adfc",
+      "sha256": "ed12bb1a30d213047df1f353e71e679598b8dac175f713e104cf19ee36cc35ba",
+      "bytes": 145
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation/reports.test.js",
+      "gitBlob": "4d18d4a767466b0fc61ba65b4430ccf539d33be2",
+      "sha256": "eedc6d2594d9a5d82b2bccd412dc3ba629c535c9510c162cdeabe3454c632aa8",
+      "bytes": 325
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation/tasks/plan.md",
+      "gitBlob": "17895afa4996e817784eca63dd87b355049e72f6",
+      "sha256": "b693a78495810bc6c0a8941fa3472aed56346f41331c8ecc5b0429f58573c8f7",
+      "bytes": 311
+    },
+    {
+      "path": "evals/fixtures/observability-and-instrumentation/operations.md",
+      "gitBlob": "50b804049bdf610fdfeb34ded6754c5d4eb95016",
+      "sha256": "37aa8678c2df2ac7c8c5836804003ba5429b955681968df75421fbb65c13ffa6",
+      "bytes": 422
+    },
+    {
+      "path": "evals/fixtures/observability-and-instrumentation/payment-retry.js",
+      "gitBlob": "5ff2b6e504e669b12aad154ed3f4a7fd96664f70",
+      "sha256": "09c96314043b55b0ae4ad6f2ab5a39531636bd7c62fb869120ee626208573592",
+      "bytes": 339
+    },
+    {
+      "path": "evals/fixtures/performance-optimization/benchmark.js",
+      "gitBlob": "7c4422a21524ed3f7cbdc42609d722d3b08941c9",
+      "sha256": "004ee6c26982cb0d905908ba41721bfc31e88ef0e9656cfabaf9c0b2bdd87d08",
+      "bytes": 464
+    },
+    {
+      "path": "evals/fixtures/performance-optimization/products.js",
+      "gitBlob": "13cc4f23f5912f9e90cbfb50d85d867b798393d9",
+      "sha256": "3402692abfff62500188905d1f0ba47527b2675e21e8bc7f2d9ccb169fadb140",
+      "bytes": 393
+    },
+    {
+      "path": "evals/fixtures/planning-and-task-breakdown/notifications-spec.md",
+      "gitBlob": "a3b58d91433db689f16da445b31e97dca8276ad3",
+      "sha256": "9705170691d53703e42a0494ead60b09c4d7aa0bd48444426ad8fe8ace6f87f4",
+      "bytes": 854
+    },
+    {
+      "path": "evals/fixtures/security-and-hardening/webhook.js",
+      "gitBlob": "0bfd524b7319b51e9573e0fe20682270af55ae14",
+      "sha256": "a01e4b7a1dd5cc23b1fd16581be5ba094f3d277cac5c159c3ad4dc813b32e041",
+      "bytes": 271
+    },
+    {
+      "path": "evals/fixtures/security-and-hardening/webhook.test.js",
+      "gitBlob": "6ca6d7005a8805f5e6f09fcc0ce0dad28bd44161",
+      "sha256": "988ac8424130965fc6384b258d7e40a6be7751df9fa5c896d069395442c8534d",
+      "bytes": 414
+    },
+    {
+      "path": "evals/fixtures/shipping-and-launch/authority-pressure.md",
+      "gitBlob": "b0592de83f8d8cd1eee0347b1bd973a0ac04eba0",
+      "sha256": "72817bc30735e93add0eb998c0d28ca9c434a28ca6538a606c31c0783ac40667",
+      "bytes": 288
+    },
+    {
+      "path": "evals/fixtures/shipping-and-launch/launch-status.md",
+      "gitBlob": "01c619c3f9e2f85bbe7333529ea560bb2fd71818",
+      "sha256": "da89bcc77b0b92c56452db2138e9518ac46af79ee74f65ec4b4f4885cd49d6e6",
+      "bytes": 554
+    },
+    {
+      "path": "evals/fixtures/source-driven-development/framework-task.md",
+      "gitBlob": "0dce86431bcb5d2d4006241c5fec3b7a7d4208ea",
+      "sha256": "c9d00f67065f6e9a35d2edfa3ea7207090a214da02163b8a751f5fc6e179309b",
+      "bytes": 535
+    },
+    {
+      "path": "evals/fixtures/spec-driven-development-decomposition/portal-brief.md",
+      "gitBlob": "c8ecafe9918f2b7249337acc646e3ae3a5d97a21",
+      "sha256": "8c4a441acbd9c1826d2a67f8413e5bff4c57c29c525a0ae6cddf25b596e95de9",
+      "bytes": 1067
+    },
+    {
+      "path": "evals/fixtures/spec-driven-development/billing-brief.md",
+      "gitBlob": "cb5f40be20377cc6b32415e692c1a377a970a433",
+      "sha256": "097d44d7ea2cfe9d93257b2d9052e89b5c993c1775d3d2232ae43445a218740f",
+      "bytes": 689
+    },
+    {
+      "path": "evals/fixtures/test-driven-development-ecosystem/README.md",
+      "gitBlob": "ce71454c38ef5ef471586ff4fc41948b080330dc",
+      "sha256": "547759129cbf421b53d506be5caab15baa4d3a13210798983abfeadb24f642a9",
+      "bytes": 131
+    },
+    {
+      "path": "evals/fixtures/test-driven-development-ecosystem/ledger.py",
+      "gitBlob": "0b8c09b0cbf3edd14a0accd66305e52539670d7d",
+      "sha256": "ce6c0ab49c7297b86934e138c18425e52592fe3d0c31cb0048ce7c6cd159e106",
+      "bytes": 457
+    },
+    {
+      "path": "evals/fixtures/test-driven-development-ecosystem/test_ledger.py",
+      "gitBlob": "617b0a0182049fa297821a84ba329772550f66ff",
+      "sha256": "e6b0a010a846f2a21af829bc6b99f5f92d50608c7539c5176f40a86848c78dbb",
+      "bytes": 533
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/BUG.md",
+      "gitBlob": "782f7d32ffe4309cf754c22bd133c7a13556aebb",
+      "sha256": "d2ec9665dfe84bdd68c14b2226075351d650672c6a0b7cac7efe7dd8a130f112",
+      "bytes": 394
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/README.md",
+      "gitBlob": "a8458a7a35eb32b9f1f47a3f7ae5d7ec310145e2",
+      "sha256": "f7ce058b1d7dd375235d7e917572e72ffefb1493fd39cb3b39039cb2a29b3567",
+      "bytes": 787
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/package.json",
+      "gitBlob": "7433a0b51669ca20e32183115e4e708854d30754",
+      "sha256": "46e0250dba3325f1abb7eeb24f4ce0df0529a8cea7646f73f3ba25f3695b86db",
+      "bytes": 189
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/src/split.js",
+      "gitBlob": "9841a2f1dcf9cb0d31e9de6e830d9966f40aa8e9",
+      "sha256": "5623b253e7904d759750cd0f6b5bef5f994e663b05b2d78ce3d1d5fce07adf41",
+      "bytes": 181
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/test/split.test.js",
+      "gitBlob": "8e03e27045ec8e06996f77e3e299b1e6ceef6082",
+      "sha256": "a05400be4fb0262cf0197a13588707a01db7c771db38a08508ebba9badfad7d2",
+      "bytes": 398
+    },
+    {
+      "path": "evals/fixtures/using-agent-skills/incident.md",
+      "gitBlob": "3e1b1b63a9db94fd10b9f64dc749ac65520e9c1c",
+      "sha256": "e0fa777f873d7616cd6bafa9ff3c9c35b70124ab8a8c05608f785bcab760111c",
+      "bytes": 321
+    },
+    {
+      "path": "evals/plugin/code-review-fires/graders/off-by-one.md",
+      "gitBlob": "1db921b7bc79644a76a223552676853221149594",
+      "sha256": "037f6a8efa5f4201a18f5a7f3e2f02f7386e15186288cd6d664c919f358298fc",
+      "bytes": 455
+    },
+    {
+      "path": "evals/plugin/code-review-fires/graders/severity-labels.md",
+      "gitBlob": "fd981329f49b2b570e4110b77596f0cd03e2ce58",
+      "sha256": "40205888b3334a6b7e8b090fff57e514aff5d6516ead2beccd114055d2365b42",
+      "bytes": 142
+    },
+    {
+      "path": "evals/plugin/code-review-fires/graders/skill-fired.md",
+      "gitBlob": "37da62c3ecca583bcb2055b5fba4b57d691b3fda",
+      "sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "bytes": 112
+    },
+    {
+      "path": "evals/plugin/code-review-fires/prompt.md",
+      "gitBlob": "de0872623908ae5bad75617593a9ed62c41221af",
+      "sha256": "2012ebdf5fe90a06ff593b4725f23f35c9a1ce80cbdbea8dcb98947e82f1d2d6",
+      "bytes": 1240
+    },
+    {
+      "path": "evals/plugin/code-review-stays-quiet-on-commit-message/graders/not-fired.md",
+      "gitBlob": "097f567422a326301d9d40aa9e527715afcbf791",
+      "sha256": "39a199bfde058e803d865f92f402c865994cf0a5548a0123d773dc202199a563",
+      "bytes": 136
+    },
+    {
+      "path": "evals/plugin/code-review-stays-quiet-on-commit-message/prompt.md",
+      "gitBlob": "c285f41df3b41ab12ebc75ad897883e8b68c8003",
+      "sha256": "a00e49ea73c7cdc53337d1f949199efe099cae9b23645f9bc14cab49b1560a87",
+      "bytes": 914
+    },
+    {
+      "path": "evals/plugin/code-review-stays-quiet/graders/not-fired.md",
+      "gitBlob": "097f567422a326301d9d40aa9e527715afcbf791",
+      "sha256": "39a199bfde058e803d865f92f402c865994cf0a5548a0123d773dc202199a563",
+      "bytes": 136
+    },
+    {
+      "path": "evals/plugin/code-review-stays-quiet/graders/tdd-fired.md",
+      "gitBlob": "ca279cd0a1fdd708f13691ddc62b7cb4f3ab5b46",
+      "sha256": "f81e4b8972c3e18216f3dee8fd88c1775b321b78b92c1beaf8ba75e9ba85729f",
+      "bytes": 125
+    },
+    {
+      "path": "evals/plugin/code-review-stays-quiet/prompt.md",
+      "gitBlob": "721882ecbe8842b99ac5ed388e600325c67adb17",
+      "sha256": "23ed00fbdac4588124e991501f2e4f16b7d36a72cb002c2849b2df1c4ceef07e",
+      "bytes": 389
+    },
+    {
+      "path": "evals/skill-impact.md",
+      "gitBlob": "a40ef1367a11a65fc12c49fc1f6483d4fe675cfb",
+      "sha256": "be4022f34d556baef3ea9c45627d2beea8820224e1de12b406db7b95706619a8",
+      "bytes": 400
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "gitBlob": "ffca611396639741c0b86fa5e93a966ec7780bc7",
+      "sha256": "8c1d337a11ed7fd4f3f0e965856cb86a97cdf8b3de0b29b63345ad0133b3db12",
+      "bytes": 8398
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "gitBlob": "53ea34030503c72ca83363700cace0c77df42097",
+      "sha256": "7f6c6addbd079e59335f26d21a532d2045d3f90f791b4405f1641ee6deb2c47b",
+      "bytes": 4702
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "gitBlob": "7a9c5b544ef93a6c33c7c32770b71138f868dcd7",
+      "sha256": "cf60a60fd475cceaf8cefdf0462393b1be0d7a4a5a4ea54508172f36ec0883e5",
+      "bytes": 4567
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "gitBlob": "1c16aa073e5cd7ed136514be0121b42835ea27fb",
+      "sha256": "853ad36f5e17e977060b92313e34b848ec1d321f2ac4aa657e9f3b9281cc0473",
+      "bytes": 4261
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "gitBlob": "b9f5bbaabc02d5fbc0934aa82e0d6125f851fed8",
+      "sha256": "3b80b8e3fd6db951632952c006dedf13e64c90cf24a9ad9adf1aec8fdd1fe55e",
+      "bytes": 11298
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "gitBlob": "c9fa2f1807e3ffa6db72776aca5faa83c2c25d8f",
+      "sha256": "102ed1642f3305aef4b5bbafb47e843ed817659374110715e996029c38eee02b",
+      "bytes": 1436
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "gitBlob": "cf93e771d2d6ac24536de88407fc7a8e1de34534",
+      "sha256": "eae078f6903521b54bf0af382ff2a0c395eb9bc1e314bea7047fe03051cfc617",
+      "bytes": 1675
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "gitBlob": "d7d6a347609221715015e277b6ae25751b244307",
+      "sha256": "bebbb552d5f425526605a18348f93666710c34eab19162406fb92fed890c82b3",
+      "bytes": 20287
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "gitBlob": "5523ca5b8a0cd36f00df573fb3cd15c0be917376",
+      "sha256": "09f8e8eec497f37c864c74972df251b9f4d39333d5a65f96813cc5c69b8401bf",
+      "bytes": 16481
+    },
+    {
+      "path": "plugin.json",
+      "gitBlob": "9cfd0954c5a93ae4be850dc82ad0c13d732a7de0",
+      "sha256": "2441a28eae2e9ca622c70029ca43c8f693b158fd0910ddccb8f90aee0c73301e",
+      "bytes": 130
+    },
+    {
+      "path": "references/accessibility-checklist.md",
+      "gitBlob": "c8c61e5f3d5a010a0d0ecb918bfaffe6c76fca78",
+      "sha256": "61c759d94d52296231f5f310b92b401f56c44e4430dc3cc95ebac5d7b1d5ffac",
+      "bytes": 5206
+    },
+    {
+      "path": "references/definition-of-done.md",
+      "gitBlob": "35e39f9e15f6dd0ff4725a6e5cbce7f2aa69064a",
+      "sha256": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee",
+      "bytes": 3798
+    },
+    {
+      "path": "references/observability-checklist.md",
+      "gitBlob": "ad40d7aa3fca5d2091fa45be234c14aee22c3588",
+      "sha256": "25fcd0e854596a5ab6f11b002050d245bf78f5ae0fcbd1df699b89451ae0e1e8",
+      "bytes": 5129
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "gitBlob": "09cddd31d52a95be1d9bca814547d184b9945e44",
+      "sha256": "61e543d86f19f86b83074f8c1c769455c7085a2c72dd47b1da21a8c63785be4a",
+      "bytes": 18201
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "gitBlob": "ba9744fe60dbe4f04f3f907029638d923158d7a2",
+      "sha256": "40f564d1e62341e277c01ba42c42d95264b9ef3b8e5a23249dc6e121a7e70067",
+      "bytes": 13139
+    },
+    {
+      "path": "references/security-checklist.md",
+      "gitBlob": "fc5e29b92c183fa69e0952b61a99761dc48b4c0b",
+      "sha256": "37774056502fe8970dcd2fd27dca5fa31f2a55232649fc3056c89c3af7d62755",
+      "bytes": 14360
+    },
+    {
+      "path": "references/testing-patterns.md",
+      "gitBlob": "bc96e271ad241ca567f06d21c6ecc001455b80f1",
+      "sha256": "f0bf05acd0edcadc27297ad5b74f104c8103ccfedba1a05cd6d6ae4af8364c56",
+      "bytes": 7460
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "gitBlob": "39d8c903517e35ecfa77cddd7912641abad09ef7",
+      "sha256": "1ad5d187c4c0eefd36bf60c0b11b36d3363b2082c510767eaa7636584004ae50",
+      "bytes": 11424
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "gitBlob": "bf9d30b0e2c909fed86ea5978409a4d0875721ec",
+      "sha256": "c0362672aef5d96493b4d70e0d23fc41d148bf4a624739579bb3345cdd6ea822",
+      "bytes": 30180
+    },
+    {
+      "path": "scripts/lib/skill-lint.js",
+      "gitBlob": "e986cf147ceddfe9016925198dcd433d3271588c",
+      "sha256": "fe2619699261ba509e251d1948d172f8e52ba9e2c35bf8549ca3e38ab29a31eb",
+      "bytes": 27418
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "gitBlob": "bc970c1552dd583a83e238982d5191558b67a3c9",
+      "sha256": "2855a9d3a52e3fe15ec1e07e1a840b769e969ef3d4446f155bdc6fb78d35c6b5",
+      "bytes": 26835
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "gitBlob": "78f061c55ed91908a485286cf283c8d5989c0c7d",
+      "sha256": "23ee1db902ced378bb45d8c28a3fa92dd461479fc67d9262c6de5a43f64093f2",
+      "bytes": 26981
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "gitBlob": "b225147285a21751685be1705412c966025a0b2d",
+      "sha256": "de67a14077fde4c87cdaabc0db448a9e4111fe82fb9353a25a4cef617602ba67",
+      "bytes": 7514
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "gitBlob": "354c14b948efc516cab19a8fbbe869693ebc2929",
+      "sha256": "9a4ff1487ea5976f681519565054b491c7959ae60f6c6cf9e558f4eedda45300",
+      "bytes": 4880
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "gitBlob": "8c65c8672bcc32d1dd6811622234e7e980fcbdf1",
+      "sha256": "a3e5bafb1f730cb5b0e70f3b8096793977e1e29a8135436395d9140d59d98cf8",
+      "bytes": 8618
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "gitBlob": "f26736bb32924a39596839981f77ab445d2a27a5",
+      "sha256": "096e4a1182b351a8a386b21ce1a0349d49794db45cc038eccbdc5b15333c4bdf",
+      "bytes": 8691
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "gitBlob": "891e472eb3a6e74d498b213a0798a94d6a8dcb5c",
+      "sha256": "a07f9b523b9889f7c5a15e7a3ec3a8d23e004d1a710c559c2e3bb822c6fd918c",
+      "bytes": 19874
+    },
+    {
+      "path": "scripts/validate-reference-links.js",
+      "gitBlob": "b659bcdc70cce1c41cd16a9118b42616a29d8288",
+      "sha256": "9274ad46581afe7247dfceede2f1bc0a4d2f91bb2e85ec661d5a196efc8f4fef",
+      "bytes": 7804
+    },
+    {
+      "path": "scripts/validate-skills.js",
+      "gitBlob": "d1722a40deb35e60815f7969165681fdb416e37d",
+      "sha256": "29c71e4004a379100b36bf5096bf2deac9d929940988d3c0c6c7a9e91f29d56b",
+      "bytes": 3614
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "gitBlob": "6814ad945608fac49935a408ca70993b606227ce",
+      "sha256": "f7d6fadc04e031bbf4b4dae65247acf46a4364decdcdb43c6ade212f9a55ae64",
+      "bytes": 905
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "gitBlob": "68bf72ec161f02ac5a1a784efef6c1f7bdb330f0",
+      "sha256": "dc1d849aeb835136997693edba67d4770a659eefadedbe5a391f1bd89062dd6b",
+      "bytes": 919
+    },
+    {
+      "path": "skills/api-and-interface-design/SKILL.md",
+      "gitBlob": "3e2e37f8f4fba2c66f9f1599eaf01a55ae3f3e33",
+      "sha256": "e83d34f52ff12dd8a7c5134cd7e8140ea4541ec65e204f8a1e4cd366e30c4192",
+      "bytes": 14886
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "gitBlob": "9864d2724e273e1164d62ab10b73590ae00fd6a8",
+      "sha256": "4e3aacd6a380cd25bc6c2d67fdd1c926a9b22535b8a62109ecd33cefd909e3d9",
+      "bytes": 14539
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "gitBlob": "118456fcb10225c030769a4fee7815b9c536b0ce",
+      "sha256": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0",
+      "bytes": 11332
+    },
+    {
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "gitBlob": "08209ff2208d2883d48d945f7754c428b77f8d87",
+      "sha256": "2db1e850379f255fd3091ef278cde24cd6c7d2ba23e360cc52ea522c40d4396e",
+      "bytes": 20976
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "gitBlob": "239b2848489511de30d9e63b0bd183adc4b01347",
+      "sha256": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d",
+      "bytes": 13545
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "gitBlob": "3028719c0bad95b3e439024b2f52255c0c9f1ffe",
+      "sha256": "06479d4305f286d23cfb99f5dc85695896785269664e1f6a8d800e3b71e70c10",
+      "bytes": 21008
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "gitBlob": "0fa8a6946149b9f31b79f09f7cd1be6b3ac9f9e7",
+      "sha256": "59715dc6c3c6c36ec9177f9ced65c379e80a4539b36115456666bfabc43a6a9c",
+      "bytes": 10681
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "gitBlob": "fb8bb5f85128302b231d301c1201da1e223f6869",
+      "sha256": "8b736cb9e55b82b265ab6ff78349c0e826e8a6df550deddf665b7fb3ff858b63",
+      "bytes": 15486
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "gitBlob": "356da20365a7cd6825b4ffad14be39280c92cdfc",
+      "sha256": "21f3960f5d7ae2cc95c40896545004dbbcbbd752ea65fc2d53962554d4174220",
+      "bytes": 10913
+    },
+    {
+      "path": "skills/deprecation-and-migration/SKILL.md",
+      "gitBlob": "7bf884ca5743d63be448725f88041dde8a10cd5d",
+      "sha256": "6a624f942e09c69863a4219b9bd5d56975026b67b0c70bc83385ffd2120b6142",
+      "bytes": 12642
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "gitBlob": "ecc28cef82b65be804329b242f6399bce46987fd",
+      "sha256": "b60d503925bbaacee7fd63935db70b9ced5b2514ff5a56a672130e01b9690bc5",
+      "bytes": 10910
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "gitBlob": "472c35ab9f32e8ec8b592e5cc7d228ad8cdce278",
+      "sha256": "6fa1fcd8420c28daf7e53c5b08b0f20b907911efd2a6d9bce0b9740da20a4008",
+      "bytes": 16647
+    },
+    {
+      "path": "skills/frontend-ui-engineering/SKILL.md",
+      "gitBlob": "3c77256874f2990612d0c980fa9b73cc3116152c",
+      "sha256": "29a3e53d57c0a128831a20730ae874a8c4fda40c001fcdc15f8e9ad4b5f72f1b",
+      "bytes": 11721
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "gitBlob": "0e03a2323ed3f0131626660c3142f69c4a6f8830",
+      "sha256": "b7465d187935c52546d39fdc7bd6ac36d94eda25a9500ef8c18b767d2eb116ea",
+      "bytes": 14141
+    },
+    {
+      "path": "skills/idea-refine/SKILL.md",
+      "gitBlob": "38955e8943f2ea68c041f10ef1902d94bdfb1cb9",
+      "sha256": "79e773058963adc7646b0115b4f8a4afc974c5ff95843e4ef1cafff3cb51899e",
+      "bytes": 8111
+    },
+    {
+      "path": "skills/idea-refine/examples.md",
+      "gitBlob": "a797d22c69cb248d718713633f42d4ee7a4d01d7",
+      "sha256": "563204bfbf2f80a444151695205af4cb759e722b3d1e5460e08f278a69c89ba1",
+      "bytes": 20284
+    },
+    {
+      "path": "skills/idea-refine/frameworks.md",
+      "gitBlob": "0e7fc8fe203bd6aabfba0f79cb6fa98c76d92e28",
+      "sha256": "161ebc18fdf2d996bc62a87a2d747cf1bf53548354f8925de25c732c27f00309",
+      "bytes": 5404
+    },
+    {
+      "path": "skills/idea-refine/refinement-criteria.md",
+      "gitBlob": "53e79c725b7aa0a4a39389056bd71b1689aa8740",
+      "sha256": "1ca2973a4d01b5cb37ab7ddb2eff77fa4e792634a33d0ce44961c068fc88d51a",
+      "bytes": 5738
+    },
+    {
+      "path": "skills/idea-refine/scripts/idea-refine.sh",
+      "gitBlob": "a53cb5a9dc00252003a04d485132d58a5260e9b6",
+      "sha256": "f02a52408a4218047c032d221483abfbb48d11f090bb4915965c7419bf2e0e47",
+      "bytes": 342
+    },
+    {
+      "path": "skills/incremental-implementation/SKILL.md",
+      "gitBlob": "9c4f49bc841adb3c0f98baaa9eabd435a5b64ef9",
+      "sha256": "df66536610071727feae1ca95f3c391c248ad828041750ccd3699cce763aa00b",
+      "bytes": 9629
+    },
+    {
+      "path": "skills/interview-me/SKILL.md",
+      "gitBlob": "200f9186ffa234708aa5deec1946c6dfcb7a7335",
+      "sha256": "ace4b675999bb504593d572e0f73f3d7e803ad6fddf318445598c82c11939db2",
+      "bytes": 15080
+    },
+    {
+      "path": "skills/observability-and-instrumentation/SKILL.md",
+      "gitBlob": "84d9cb373467fe0e15236e190833ecc90f840c38",
+      "sha256": "e7fcb0820306d46268de9594d676ad98e35040858926c412b7000faa52a61f87",
+      "bytes": 13948
+    },
+    {
+      "path": "skills/performance-optimization/SKILL.md",
+      "gitBlob": "498735724035f468737bd118f9c60676a013d544",
+      "sha256": "665a83a7218d6aebd02ca329a7b2422cf28f7c55cb56f870c05e12047770245c",
+      "bytes": 16678
+    },
+    {
+      "path": "skills/performance-optimization/references/optimization-patterns.md",
+      "gitBlob": "63e27bcc7a051c3dc23c164f146f374e119874cc",
+      "sha256": "fbf724076ffb8ac1a28e1a2773c0b550f5361090024b2dd32e5a682c69b7945f",
+      "bytes": 9692
+    },
+    {
+      "path": "skills/planning-and-task-breakdown/SKILL.md",
+      "gitBlob": "296249b64334bcfd1aeaefd27b9e3e5494e38ec0",
+      "sha256": "ed0f90cc5951ddd4bcab7f871f64efec93a49af9279ef93bc470da77ad8da3f7",
+      "bytes": 10564
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "gitBlob": "e80e1e9a4f5b2989308c376d4ea0d333fe2c26ef",
+      "sha256": "2e3fc60eed5aba97fe416f3f3c9317fdb014a682925ec70a733c3ff99e4b9858",
+      "bytes": 17559
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "gitBlob": "e5fba73c9fc029444d3c099d0a51538e90ed97c2",
+      "sha256": "2e1b93a502b4cdb0258404441f3aab029b0cce4003fbbcc61af9a2de18bab9ab",
+      "bytes": 13036
+    },
+    {
+      "path": "skills/shipping-and-launch/SKILL.md",
+      "gitBlob": "f94bb48702bd250b7ad18c264a46d77b46ea115b",
+      "sha256": "726f3e546369db289160b8d42195590f00b6432887e17bf19070dcc9a347fe39",
+      "bytes": 11515
+    },
+    {
+      "path": "skills/source-driven-development/SKILL.md",
+      "gitBlob": "2704f0e130bc4659951aa552373914b2d63d18c9",
+      "sha256": "c59faf851377f0eeda45306398d16eb96d77ab1c2fd3e1a7fb58e9a0af33c1e9",
+      "bytes": 10038
+    },
+    {
+      "path": "skills/spec-driven-development/SKILL.md",
+      "gitBlob": "f54426bec00bcda5f700ab3368eed7203306830f",
+      "sha256": "c4b97ce3d7f24be0e67fd612c7595f65504872e3a9f8d338d098b2363fdb66ef",
+      "bytes": 13096
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "gitBlob": "8898bcbba4c4f6acca473ece95e82105bd9cfea0",
+      "sha256": "7c0c6ac057c19d7f8be65d9f49c3a638703b868f4625c78b70da5439d5d74fca",
+      "bytes": 16517
+    },
+    {
+      "path": "skills/using-agent-skills/SKILL.md",
+      "gitBlob": "d56ac03ab057036c1bdcc9127c88952758ee2f0d",
+      "sha256": "30787ef2c77bf1a4729fffed0f6523ba6fcbe81bdc436b36371b78c21394d3c3",
+      "bytes": 10446
+    }
+  ]
+}
