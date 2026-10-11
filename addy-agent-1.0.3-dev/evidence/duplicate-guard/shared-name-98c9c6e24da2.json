@@ -1,0 +1,65 @@
+{
+  "recordId": "dg_af25927e-f78f-452e-a0a3-7ce25e61451d",
+  "task": "shared-name",
+  "intent": "Add a shared helper",
+  "agentId": "dg-postcheck",
+  "revision": "40a88b472cbd7021d3c05bbc8143548924bc73c1",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-Tcrvkv",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "sharedName"
+  ],
+  "symbolFiles": {
+    "sharedName": "src/m3.mjs"
+  },
+  "candidates": [],
+  "collisions": [
+    {
+      "name": "sharedName",
+      "path": "src/m2.mjs",
+      "line": 1,
+      "kind": "function",
+      "justification": "Independent module; intentionally separate implementation."
+    }
+  ],
+  "acknowledged": [
+    {
+      "name": "sharedName",
+      "path": "src/m2.mjs",
+      "justification": "Independent module; intentionally separate implementation."
+    }
+  ],
+  "scan": {
+    "filesScanned": 8,
+    "bytesScanned": 787,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 4,
+    "declarations": {
+      "sharedName": [
+        {
+          "path": "src/m2.mjs",
+          "line": 1,
+          "kind": "function"
+        }
+      ]
+    },
+    "similar": {
+      "sharedName": []
+    },
+    "references": {
+      "sharedName": [
+        {
+          "path": "src/m2.mjs",
+          "line": 1,
+          "text": "export function sharedName(value) {"
+        }
+      ]
+    }
+  },
+  "at": "2026-10-11T13:14:04.260Z"
+}

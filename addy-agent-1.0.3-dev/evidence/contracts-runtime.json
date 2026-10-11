@@ -1,0 +1,580 @@
+{
+  "testedAt": "2026-10-11T14:01:31.624Z",
+  "nodeVersion": "v24.15.0",
+  "runtimeVersion": "0.2.1-alpha.2",
+  "artifactHashes": {
+    "core.mjs": "58f4759eb01cd52189a6a3c02fe6aae147ff0a42eff0a1d6b5241b8931f2e9ab",
+    "index.mjs": "75f1d8b0725df27dbf8c7ebe62ba7ba8864903a1f0bc632b7c06908e2a3081ce",
+    "cordis.patch.yml": "ea59fc8a873c35c18df66bb11aec975b33b80f1894b11eefdf99b73ca1d9b3c8"
+  },
+  "transport": "deterministic test-only LlmAdapter; no configured provider or profile touched",
+  "nativeServices": [
+    "dsh-session-projection",
+    "dsh-session",
+    "dsh-agent",
+    "dsh-system-prompt",
+    "dsh-tools",
+    "dsh-skill",
+    "dsh-commands",
+    "dsh-fs-local",
+    "dsh-working-directory",
+    "dsh-agent-loop",
+    "dsh-subagent",
+    "dsh-subagent-spawn-in-process"
+  ],
+  "cases": [
+    {
+      "name": "native Cordis scoped registration and per-agent commands",
+      "pass": true,
+      "detail": {
+        "addyTools": [
+          "addy_command",
+          "addy_specialists",
+          "addy_results",
+          "skill"
+        ],
+        "addyCommands": [
+          {
+            "name": "build",
+            "description": "Implement tasks incrementally — build, test, verify, commit. Add \"auto\" to run the whole plan in one approved pass.",
+            "input": {
+              "hint": "[auto|all]"
+            }
+          },
+          {
+            "name": "code-simplify",
+            "description": "Simplify code for clarity and maintainability — reduce complexity without changing behavior",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "constraints",
+            "description": "Define and enforce this project's quality bar — interview, sane defaults, CONSTRAINTS.md",
+            "input": {
+              "hint": "[check|guard|ratchet]"
+            }
+          },
+          {
+            "name": "plan",
+            "description": "Break work into small verifiable tasks with acceptance criteria and dependency ordering",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "review",
+            "description": "Conduct a five-axis code review — correctness, readability, architecture, security, performance",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "ship",
+            "description": "Run the pre-launch checklist via parallel fan-out to specialist personas, then synthesize a go/no-go decision",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "spec",
+            "description": "Start spec-driven development — write a structured specification before writing code",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "test",
+            "description": "Run TDD workflow — write failing tests, implement, verify. For bugs, use the Prove-It pattern.",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          },
+          {
+            "name": "webperf",
+            "description": "Run a web performance audit via the web-performance-auditor persona",
+            "input": {
+              "hint": "[original arguments]"
+            }
+          }
+        ],
+        "outsiderTools": [],
+        "outsiderCommands": []
+      }
+    },
+    {
+      "name": "25 exact original skill bytes and directory resourceBase; outsider isolation",
+      "pass": true,
+      "detail": [
+        {
+          "name": "api-and-interface-design",
+          "sha256": "e83d34f52ff12dd8a7c5134cd7e8140ea4541ec65e204f8a1e4cd366e30c4192",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\api-and-interface-design"
+          }
+        },
+        {
+          "name": "browser-testing-with-devtools",
+          "sha256": "4e3aacd6a380cd25bc6c2d67fdd1c926a9b22535b8a62109ecd33cefd909e3d9",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\browser-testing-with-devtools"
+          }
+        },
+        {
+          "name": "ci-cd-and-automation",
+          "sha256": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\ci-cd-and-automation"
+          }
+        },
+        {
+          "name": "code-review-and-quality",
+          "sha256": "2db1e850379f255fd3091ef278cde24cd6c7d2ba23e360cc52ea522c40d4396e",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\code-review-and-quality"
+          }
+        },
+        {
+          "name": "code-simplification",
+          "sha256": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\code-simplification"
+          }
+        },
+        {
+          "name": "constraint-driven-development",
+          "sha256": "06479d4305f286d23cfb99f5dc85695896785269664e1f6a8d800e3b71e70c10",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\constraint-driven-development"
+          }
+        },
+        {
+          "name": "context-engineering",
+          "sha256": "8b736cb9e55b82b265ab6ff78349c0e826e8a6df550deddf665b7fb3ff858b63",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\context-engineering"
+          }
+        },
+        {
+          "name": "debugging-and-error-recovery",
+          "sha256": "21f3960f5d7ae2cc95c40896545004dbbcbbd752ea65fc2d53962554d4174220",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\debugging-and-error-recovery"
+          }
+        },
+        {
+          "name": "deprecation-and-migration",
+          "sha256": "6a624f942e09c69863a4219b9bd5d56975026b67b0c70bc83385ffd2120b6142",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\deprecation-and-migration"
+          }
+        },
+        {
+          "name": "documentation-and-adrs",
+          "sha256": "b60d503925bbaacee7fd63935db70b9ced5b2514ff5a56a672130e01b9690bc5",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\documentation-and-adrs"
+          }
+        },
+        {
+          "name": "doubt-driven-development",
+          "sha256": "6fa1fcd8420c28daf7e53c5b08b0f20b907911efd2a6d9bce0b9740da20a4008",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\doubt-driven-development"
+          }
+        },
+        {
+          "name": "frontend-ui-engineering",
+          "sha256": "29a3e53d57c0a128831a20730ae874a8c4fda40c001fcdc15f8e9ad4b5f72f1b",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\frontend-ui-engineering"
+          }
+        },
+        {
+          "name": "git-workflow-and-versioning",
+          "sha256": "b7465d187935c52546d39fdc7bd6ac36d94eda25a9500ef8c18b767d2eb116ea",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\git-workflow-and-versioning"
+          }
+        },
+        {
+          "name": "idea-refine",
+          "sha256": "79e773058963adc7646b0115b4f8a4afc974c5ff95843e4ef1cafff3cb51899e",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\idea-refine"
+          }
+        },
+        {
+          "name": "incremental-implementation",
+          "sha256": "df66536610071727feae1ca95f3c391c248ad828041750ccd3699cce763aa00b",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\incremental-implementation"
+          }
+        },
+        {
+          "name": "interview-me",
+          "sha256": "ace4b675999bb504593d572e0f73f3d7e803ad6fddf318445598c82c11939db2",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\interview-me"
+          }
+        },
+        {
+          "name": "observability-and-instrumentation",
+          "sha256": "e7fcb0820306d46268de9594d676ad98e35040858926c412b7000faa52a61f87",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\observability-and-instrumentation"
+          }
+        },
+        {
+          "name": "performance-optimization",
+          "sha256": "665a83a7218d6aebd02ca329a7b2422cf28f7c55cb56f870c05e12047770245c",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\performance-optimization"
+          }
+        },
+        {
+          "name": "planning-and-task-breakdown",
+          "sha256": "ed0f90cc5951ddd4bcab7f871f64efec93a49af9279ef93bc470da77ad8da3f7",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\planning-and-task-breakdown"
+          }
+        },
+        {
+          "name": "security-and-hardening",
+          "sha256": "2e3fc60eed5aba97fe416f3f3c9317fdb014a682925ec70a733c3ff99e4b9858",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\security-and-hardening"
+          }
+        },
+        {
+          "name": "shipping-and-launch",
+          "sha256": "726f3e546369db289160b8d42195590f00b6432887e17bf19070dcc9a347fe39",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\shipping-and-launch"
+          }
+        },
+        {
+          "name": "source-driven-development",
+          "sha256": "c59faf851377f0eeda45306398d16eb96d77ab1c2fd3e1a7fb58e9a0af33c1e9",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\source-driven-development"
+          }
+        },
+        {
+          "name": "spec-driven-development",
+          "sha256": "c4b97ce3d7f24be0e67fd612c7595f65504872e3a9f8d338d098b2363fdb66ef",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\spec-driven-development"
+          }
+        },
+        {
+          "name": "test-driven-development",
+          "sha256": "7c0c6ac057c19d7f8be65d9f49c3a638703b868f4625c78b70da5439d5d74fca",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\test-driven-development"
+          }
+        },
+        {
+          "name": "using-agent-skills",
+          "sha256": "30787ef2c77bf1a4729fffed0f6523ba6fcbe81bdc436b36371b78c21394d3c3",
+          "resourceBase": {
+            "kind": "directory",
+            "path": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\skills\\using-agent-skills"
+          }
+        }
+      ]
+    },
+    {
+      "name": "upstream routing section is intact and scoped",
+      "pass": true,
+      "detail": {
+        "section": "addy-methodology",
+        "originalRoutingSha256": "30787ef2c77bf1a4729fffed0f6523ba6fcbe81bdc436b36371b78c21394d3c3",
+        "exactOriginalRoutingPrefix": true,
+        "outsiderSections": [
+          "harness:identity",
+          "deployment:persona-prefix",
+          "deployment:persona-suffix"
+        ]
+      }
+    },
+    {
+      "name": "explicit /spec and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": "  feature \"quoted\"\nsecond line  ",
+        "sourceSha256": "82325b4cc75ae2413c7bf4b6f84804eb662935d9df98edab50eef2b39ff904b0",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/spec.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-1",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /spec (82325b4cc75a); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /plan and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": "\tfeature --scope=api ",
+        "sourceSha256": "91d961b2a7011209bc6771c176932e72e11b99d0c524e3f63c9f2e2a94fbc993",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/plan.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-2",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /plan (91d961b2a701); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /build and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": " auto",
+        "sourceSha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/build.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-3",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /build (74cc85b5092f); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /test and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": "  src/api ",
+        "sourceSha256": "62f72b64cfac6db984db072fdc987a23e6049876191297da5f37367def986ff2",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/test.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-4",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /test (62f72b64cfac); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /constraints and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": " guard",
+        "sourceSha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/constraints.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-5",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /constraints (f6d8fdf69be7); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /review and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": " HEAD~1..HEAD ",
+        "sourceSha256": "8ad7da75873b430b737328d1bdd95fc8d2de4a4866737087feb4d218abe4e88f",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/review.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-6",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /review (8ad7da75873b); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /webperf and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": " https://example.test --mode=lab ",
+        "sourceSha256": "74c0c1335f1397a5138a78eda4275e4e5deba16c4537f3a4b4971c3280d0ba27",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/webperf.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-7",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /webperf (74c0c1335f13); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /code-simplify and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": " src/complex.js ",
+        "sourceSha256": "71e9e8d38c5cbab5b7ecff324ed4ea0f1aaa4fd053ea6c2b717f2fbadfb65a91",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/code-simplify.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-8",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /code-simplify (71e9e8d38c5c); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit /ship and addy_command share source and raw args",
+      "pass": true,
+      "detail": {
+        "rawArguments": "  release-candidate ",
+        "sourceSha256": "02d2d0fc10bfb58bb62dcfe22ed396cd2b9f55dced7d5cd92fce6d29f0da4ace",
+        "definitionId": "1be8e34187e34647bb83adc3a1323b26ae6f6abe/.claude/commands/ship.md",
+        "originalSourceEqual": true,
+        "queuedInstructionsEqual": true,
+        "commandExecution": {
+          "commandId": "cmd-04369cad-9",
+          "result": {
+            "kind": "success",
+            "text": "Queued original Addy /ship (02d2d0fc10bf); workflow completion is not yet verified."
+          }
+        }
+      }
+    },
+    {
+      "name": "argument semantics build auto/all and constraints check/guard/ratchet",
+      "pass": true,
+      "detail": [
+        {
+          "command": "build",
+          "args": " auto",
+          "mode": "autonomous",
+          "sha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277"
+        },
+        {
+          "command": "build",
+          "args": " all",
+          "mode": "autonomous",
+          "sha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277"
+        },
+        {
+          "command": "build",
+          "args": " task 1",
+          "mode": "single-task",
+          "sha256": "74cc85b5092f8e209bcda36441a4ce17a5cd9efd2a7d8ce76ba202816088e277"
+        },
+        {
+          "command": "constraints",
+          "args": " check",
+          "mode": "check",
+          "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171"
+        },
+        {
+          "command": "constraints",
+          "args": " guard",
+          "mode": "guard",
+          "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171"
+        },
+        {
+          "command": "constraints",
+          "args": " ratchet",
+          "mode": "ratchet",
+          "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171"
+        },
+        {
+          "command": "constraints",
+          "args": " setup",
+          "mode": "setup",
+          "sha256": "f6d8fdf69be74059db907cf474149eae336b6fbfbcbfb791546e321085612171"
+        }
+      ]
+    },
+    {
+      "name": "specialist delegation denied by actual tool runtime",
+      "pass": true,
+      "detail": {
+        "denial": {
+          "isError": true,
+          "error": {
+            "message": "unknown tool \"contracts_delegation_sentinel\"",
+            "info": {
+              "name": "ToolNotFoundError",
+              "code": "UNKNOWN_TOOL"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Error: unknown tool \"contracts_delegation_sentinel\""
+            }
+          ]
+        },
+        "specialistDenial": {
+          "isError": true,
+          "error": {
+            "message": "unknown tool \"addy_specialists\"",
+            "info": {
+              "name": "ToolNotFoundError",
+              "code": "UNKNOWN_TOOL"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Error: unknown tool \"addy_specialists\""
+            }
+          ]
+        },
+        "note": "Exact full specialist activation and direct subagent/workflow denial belong to native-runtime.mjs companion; this independently verifies scoped inherited Addy tool denial."
+      }
+    }
+  ],
+  "limitations": [
+    "Command entry and model request dispatch are tested, not LLM adherence to every upstream approval.",
+    "Standalone isolated process; actual bundle not installed."
+  ],
+  "pass": true
+}

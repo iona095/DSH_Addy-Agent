@@ -1,0 +1,235 @@
+{
+  "testedAt": "2026-10-11T14:01:32.679Z",
+  "transport": "Real native activation + exact-child local delegation registrations + actual Addy adapter; deterministic test-only LlmAdapter",
+  "denials": [
+    {
+      "childId": "4e4f7e03-d678-4f40-9117-02a569c1b74d",
+      "name": "subagent",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "4e4f7e03-d678-4f40-9117-02a569c1b74d",
+      "name": "spawn_teammate",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "4e4f7e03-d678-4f40-9117-02a569c1b74d",
+      "name": "team_task_create",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "898ac4fb-cbb2-42b1-aa71-177aabb8fb29",
+      "name": "subagent",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "898ac4fb-cbb2-42b1-aa71-177aabb8fb29",
+      "name": "spawn_teammate",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "898ac4fb-cbb2-42b1-aa71-177aabb8fb29",
+      "name": "team_task_create",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "c73ef119-be95-46e7-8180-0aaff007a2af",
+      "name": "subagent",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "c73ef119-be95-46e7-8180-0aaff007a2af",
+      "name": "spawn_teammate",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    },
+    {
+      "childId": "c73ef119-be95-46e7-8180-0aaff007a2af",
+      "name": "team_task_create",
+      "result": {
+        "isError": true,
+        "error": {
+          "message": "Nested delegation disabled for original Addy specialists"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: Nested delegation disabled for original Addy specialists"
+          }
+        ]
+      }
+    }
+  ],
+  "pass": true,
+  "result": {
+    "isError": false,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"command\": \"specialists\",\n  \"arguments\": \"\",\n  \"revision\": \"1be8e34187e34647bb83adc3a1323b26ae6f6abe\",\n  \"tasksAttempted\": [],\n  \"subagents\": {\n    \"attempted\": 3,\n    \"started\": 3,\n    \"completed\": 3,\n    \"failed\": 0\n  },\n  \"counts\": {\n    \"toolCalls\": 0,\n    \"results\": 0,\n    \"uniqueResults\": 0,\n    \"duplicateResults\": 0,\n    \"failures\": 0,\n    \"findings\": 0,\n    \"uniqueFindings\": 0,\n    \"duplicateFindings\": 0\n  },\n  \"resultProvenance\": [],\n  \"groupedFindings\": [],\n  \"errors\": [],\n  \"incomplete\": false,\n  \"verificationEvidence\": [],\n  \"summary\": \"/specialists: 3/3 specialist reports complete; 0 unique findings; 0 incomplete/error outcomes.\",\n  \"groups\": {\n    \"byFile\": {},\n    \"bySeverity\": {},\n    \"byAgent\": {\n      \"code-reviewer\": [\n        \"/reports/0\"\n      ],\n      \"security-auditor\": [\n        \"/reports/1\"\n      ],\n      \"test-engineer\": [\n        \"/reports/2\"\n      ]\n    }\n  },\n  \"fullResult\": {\n    \"path\": \"M:\\\\AIFUN\\\\WorkDir\\\\addy-agent\\\\evidence\\\\d9cd633b-56bf-47b4-ba43-60818ca6b62f-cfc539619f4d.json\",\n    \"sha256\": \"cfc539619f4d87f3bfe59dae388382741192e1d8c20f158f2b87397fe63a1834\",\n    \"bytes\": 4733\n  },\n  \"specialistReports\": [\n    {\n      \"persona\": \"code-reviewer\",\n      \"status\": \"completed\",\n      \"childId\": \"4e4f7e03-d678-4f40-9117-02a569c1b74d\",\n      \"source\": \"M:\\\\AIFUN\\\\WorkDir\\\\addy-agent\\\\upstream\\\\agents\\\\code-reviewer.md\",\n      \"fullResultPointer\": \"/reports/0\"\n    },\n    {\n      \"persona\": \"security-auditor\",\n      \"status\": \"completed\",\n      \"childId\": \"898ac4fb-cbb2-42b1-aa71-177aabb8fb29\",\n      \"source\": \"M:\\\\AIFUN\\\\WorkDir\\\\addy-agent\\\\upstream\\\\agents\\\\security-auditor.md\",\n      \"fullResultPointer\": \"/reports/1\"\n    },\n    {\n      \"persona\": \"test-engineer\",\n      \"status\": \"completed\",\n      \"childId\": \"c73ef119-be95-46e7-8180-0aaff007a2af\",\n      \"source\": \"M:\\\\AIFUN\\\\WorkDir\\\\addy-agent\\\\upstream\\\\agents\\\\test-engineer.md\",\n      \"fullResultPointer\": \"/reports/2\"\n    }\n  ],\n  \"note\": \"Full independent reports and all raw results remain in fullResult.path (JSON). Read the original reports at specialistReports[*].fullResultPointer before final synthesis; never substitute this summary for required original report sections.\",\n  \"decisionAuthority\": \"Main agent must execute original synthesis and rollback contract; incomplete reviews cannot establish GO.\"\n}"
+      }
+    ],
+    "value": {
+      "command": "specialists",
+      "arguments": "",
+      "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+      "tasksAttempted": [],
+      "subagents": {
+        "attempted": 3,
+        "started": 3,
+        "completed": 3,
+        "failed": 0
+      },
+      "counts": {
+        "toolCalls": 0,
+        "results": 0,
+        "uniqueResults": 0,
+        "duplicateResults": 0,
+        "failures": 0,
+        "findings": 0,
+        "uniqueFindings": 0,
+        "duplicateFindings": 0
+      },
+      "resultProvenance": [],
+      "groupedFindings": [],
+      "errors": [],
+      "incomplete": false,
+      "verificationEvidence": [],
+      "summary": "/specialists: 3/3 specialist reports complete; 0 unique findings; 0 incomplete/error outcomes.",
+      "groups": {
+        "byFile": {},
+        "bySeverity": {},
+        "byAgent": {
+          "code-reviewer": [
+            "/reports/0"
+          ],
+          "security-auditor": [
+            "/reports/1"
+          ],
+          "test-engineer": [
+            "/reports/2"
+          ]
+        }
+      },
+      "fullResult": {
+        "path": "M:\\AIFUN\\WorkDir\\addy-agent\\evidence\\d9cd633b-56bf-47b4-ba43-60818ca6b62f-cfc539619f4d.json",
+        "sha256": "cfc539619f4d87f3bfe59dae388382741192e1d8c20f158f2b87397fe63a1834",
+        "bytes": 4733
+      },
+      "specialistReports": [
+        {
+          "persona": "code-reviewer",
+          "status": "completed",
+          "childId": "4e4f7e03-d678-4f40-9117-02a569c1b74d",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\code-reviewer.md",
+          "fullResultPointer": "/reports/0"
+        },
+        {
+          "persona": "security-auditor",
+          "status": "completed",
+          "childId": "898ac4fb-cbb2-42b1-aa71-177aabb8fb29",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\security-auditor.md",
+          "fullResultPointer": "/reports/1"
+        },
+        {
+          "persona": "test-engineer",
+          "status": "completed",
+          "childId": "c73ef119-be95-46e7-8180-0aaff007a2af",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\test-engineer.md",
+          "fullResultPointer": "/reports/2"
+        }
+      ],
+      "note": "Full independent reports and all raw results remain in fullResult.path (JSON). Read the original reports at specialistReports[*].fullResultPointer before final synthesis; never substitute this summary for required original report sections.",
+      "decisionAuthority": "Main agent must execute original synthesis and rollback contract; incomplete reviews cannot establish GO."
+    }
+  },
+  "entered": 3,
+  "unexpectedDelegations": 0
+}

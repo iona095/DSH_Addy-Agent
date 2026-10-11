@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_0a03d0a8-c3d8-484d-8f77-2016eef22e80",
+  "task": "abs-paths",
+  "intent": "absolute/relative equivalence",
+  "agentId": "dg-abs-paths",
+  "revision": "ed2a0cdbb3c34db71bee8a30d88a4070df47524b",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-SqB4XO",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "absNewThing"
+  ],
+  "symbolFiles": {
+    "absNewThing": "src/abs-new.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 26,
+    "bytesScanned": 1504,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 13,
+    "declarations": {
+      "absNewThing": []
+    },
+    "similar": {
+      "absNewThing": []
+    },
+    "references": {
+      "absNewThing": []
+    }
+  },
+  "at": "2026-10-11T14:01:51.222Z"
+}

@@ -1,0 +1,58 @@
+{
+  "recordId": "dg_0ac48e33-5997-4038-9e9a-dba1df3bddee",
+  "task": "strict-config",
+  "intent": "Add a strict config-file loader",
+  "agentId": "dg-similar",
+  "revision": "2fe6c9c2dd0bbb067378da539d87816b3186d562",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-r7cuDU",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "parseConfigFile"
+  ],
+  "symbolFiles": {
+    "parseConfigFile": "src/config-file.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 5,
+    "bytesScanned": 405,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 4,
+    "declarations": {
+      "parseConfigFile": []
+    },
+    "similar": {
+      "parseConfigFile": [
+        {
+          "name": "parseConfig",
+          "path": "src/duplicate.mjs",
+          "line": 1,
+          "score": 0.667
+        },
+        {
+          "name": "parseConfig",
+          "path": "src/parser.mjs",
+          "line": 2,
+          "score": 0.667
+        },
+        {
+          "name": "parseConfigStrict",
+          "path": "src/parser.mjs",
+          "line": 6,
+          "score": 0.5
+        }
+      ]
+    },
+    "references": {
+      "parseConfigFile": []
+    }
+  },
+  "at": "2026-10-11T13:07:28.339Z"
+}

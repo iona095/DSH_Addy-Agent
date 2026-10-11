@@ -1,0 +1,77 @@
+{
+  "recordId": "dg_eb466401-4d93-45e8-aab8-3b3b8b1fc0fc",
+  "task": "duplicate-config",
+  "intent": "Deliberate second parser for untrusted input",
+  "agentId": "dg-addy",
+  "revision": "13b03181c00889e85900b1870cc372b1e8c94ab0",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-YrBkxx",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": "Isolated hardened parser for untrusted input.",
+  "symbols": [
+    "parseConfig"
+  ],
+  "symbolFiles": {
+    "parseConfig": "src/duplicate.mjs"
+  },
+  "candidates": [],
+  "collisions": [
+    {
+      "name": "parseConfig",
+      "path": "src/parser.mjs",
+      "line": 2,
+      "kind": "function",
+      "justification": "Different trust boundary; the existing parser must not be widened."
+    }
+  ],
+  "acknowledged": [
+    {
+      "name": "parseConfig",
+      "path": "src/parser.mjs",
+      "justification": "Different trust boundary; the existing parser must not be widened."
+    }
+  ],
+  "scan": {
+    "filesScanned": 4,
+    "bytesScanned": 371,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 2,
+    "declarations": {
+      "parseConfig": [
+        {
+          "path": "src/parser.mjs",
+          "line": 2,
+          "kind": "function"
+        }
+      ]
+    },
+    "similar": {
+      "parseConfig": [
+        {
+          "name": "parseConfigStrict",
+          "path": "src/parser.mjs",
+          "line": 6,
+          "score": 0.667
+        }
+      ]
+    },
+    "references": {
+      "parseConfig": [
+        {
+          "path": "src/parser.mjs",
+          "line": 2,
+          "text": "export function parseConfig(text) {"
+        },
+        {
+          "path": "src/parser.mjs",
+          "line": 7,
+          "text": "return parseConfig(text).toLowerCase();"
+        }
+      ]
+    }
+  },
+  "at": "2026-10-11T13:50:35.680Z"
+}

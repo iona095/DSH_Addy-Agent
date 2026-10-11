@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_69a08f9c-f2dc-4ae4-80c7-37112e0dc747",
+  "task": "perf-2",
+  "intent": "overhead probe",
+  "agentId": "dg-perf",
+  "revision": "6b51a7a65306095987fb3e5056aed0a9370f5511",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-YrBkxx",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "perfApproved2"
+  ],
+  "symbolFiles": {
+    "perfApproved2": "src/perf-approved-2.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 13,
+    "bytesScanned": 1048,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 8,
+    "declarations": {
+      "perfApproved2": []
+    },
+    "similar": {
+      "perfApproved2": []
+    },
+    "references": {
+      "perfApproved2": []
+    }
+  },
+  "at": "2026-10-11T13:50:43.678Z"
+}

@@ -1,0 +1,54 @@
+{
+  "testedAt": "2026-10-11T14:01:32.111Z",
+  "nodeVersion": "v24.15.0",
+  "cases": [
+    {
+      "name": "patch inserts only the isolated addy-agent preset",
+      "pass": true,
+      "detail": {
+        "patchSha256": "ea59fc8a873c35c18df66bb11aec975b33b80f1894b11eefdf99b73ca1d9b3c8",
+        "presetId": "addy-agent",
+        "pluginCount": 23,
+        "workflow": {
+          "id": "workflow-ptc",
+          "name": "@deepseek-ai/dsh-workflow-ptc",
+          "disabled": false,
+          "config": {
+            "provider": "spawn",
+            "maxConcurrentAgents": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "the duplicate guard is the ONLY row added to the preset and every pre-existing row is unchanged",
+      "pass": true,
+      "detail": {
+        "rows": 23,
+        "added": [
+          "addy-duplicate-guard"
+        ],
+        "preexisting": 22
+      }
+    },
+    {
+      "name": "the guard module is loadable through the package subpath the row names",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "pinned manifest integrity, nine commands and twenty-five skills are unchanged",
+      "pass": true,
+      "detail": {
+        "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+        "filesVerified": 212,
+        "commands": 9,
+        "skills": 25
+      }
+    }
+  ],
+  "limitations": [
+    "Configuration shape inspection only; services and dispatch covered independently in contracts-runtime.mjs and duplicate-guard-runtime.mjs."
+  ],
+  "pass": true
+}

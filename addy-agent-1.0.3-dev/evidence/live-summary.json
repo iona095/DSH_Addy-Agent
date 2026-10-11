@@ -1,0 +1,243 @@
+{
+  "pass": true,
+  "requirements": {
+    "allNativeCasesPass": true,
+    "threeActualCompletedChildren": true,
+    "actualThreeChildStreamOverlap": true,
+    "childLocalDelegationDenied": true,
+    "parentNoGo": true,
+    "parentRollbackPresent": true,
+    "unchangedDefault": true
+  },
+  "startedAt": "2026-10-11T10:36:51.963Z",
+  "completedAt": "2026-10-11T10:43:39.925Z",
+  "quiescentAt": "2026-10-11T10:43:39.985Z",
+  "configuredModel": {
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "adapterGeneration": 2,
+  "nativeCases": [
+    {
+      "name": "installed preset scopes, commands and actual Node PTC",
+      "pass": true
+    },
+    {
+      "name": "installed isolated native workflow helpers",
+      "pass": true
+    },
+    {
+      "name": "real-provider natural-language review loads the same original review command",
+      "pass": true
+    },
+    {
+      "name": "real-provider slash ship invokes native concurrent specialist fan-out",
+      "pass": true,
+      "childStreamCount": 17,
+      "maxConcurrentChildStreams": 3
+    },
+    {
+      "name": "actual installed child-local nested delegation denied through Node PTC",
+      "pass": true,
+      "recomputed": true,
+      "checks": [
+        {
+          "agentId": "67b2a8ff-4b7d-4aa4-9af9-d8e9933a537a",
+          "pass": true,
+          "denials": [
+            {
+              "name": "subagent",
+              "error": "Nested delegation disabled for original Addy specialists"
+            },
+            {
+              "name": "spawn_teammate",
+              "error": "tools[name] is not a function"
+            },
+            {
+              "name": "team_task_create",
+              "error": "tools[name] is not a function"
+            }
+          ]
+        },
+        {
+          "agentId": "a5bd2969-d061-496b-beee-5629f4d11951",
+          "pass": true,
+          "denials": [
+            {
+              "name": "subagent",
+              "error": "Nested delegation disabled for original Addy specialists"
+            },
+            {
+              "name": "spawn_teammate",
+              "error": "tools[name] is not a function"
+            },
+            {
+              "name": "team_task_create",
+              "error": "tools[name] is not a function"
+            }
+          ]
+        },
+        {
+          "agentId": "046e1590-8df4-4956-bbf1-c104cdf52e49",
+          "pass": true,
+          "denials": [
+            {
+              "name": "subagent",
+              "error": "Nested delegation disabled for original Addy specialists"
+            },
+            {
+              "name": "spawn_teammate",
+              "error": "tools[name] is not a function"
+            },
+            {
+              "name": "team_task_create",
+              "error": "tools[name] is not a function"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default model selection unchanged",
+      "pass": true
+    }
+  ],
+  "subagents": {
+    "attempted": 3,
+    "started": 3,
+    "completed": 3,
+    "failed": 0
+  },
+  "maximumConcurrentChildStreams": 3,
+  "overlapWitness": {
+    "overlapStartMs": 1791715139608,
+    "overlapEndMs": 1791715144915,
+    "overlapDurationMs": 5307,
+    "streams": [
+      {
+        "agentId": "046e1590-8df4-4956-bbf1-c104cdf52e49",
+        "provider": "openai-codex",
+        "model": "gpt-6.1-sol",
+        "startedAt": 1791715139545,
+        "persona": "security-auditor",
+        "systemSha256": "f56002a5433930dedf0ed0771f697ce05c6a1278dcafb3b59ae195bc5afbb4ab",
+        "toolSchemas": [
+          "run_code"
+        ],
+        "activeChildrenAtStart": 1,
+        "personaSource": "C:\\Users\\GNV\\.claude\\agents\\security-auditor.md",
+        "personaSha256": "cce351e1de6e9b39cd77301370d42829205161ff46dec3af42b63c5f0a172404",
+        "override": true,
+        "endedAt": 1791715145988
+      },
+      {
+        "agentId": "67b2a8ff-4b7d-4aa4-9af9-d8e9933a537a",
+        "provider": "openai-codex",
+        "model": "gpt-6.1-sol",
+        "startedAt": 1791715139574,
+        "persona": "code-reviewer",
+        "systemSha256": "4659ac2fcc13036de1a16107e30ab410e26f254013ec803f5268bc817321b042",
+        "toolSchemas": [
+          "run_code"
+        ],
+        "activeChildrenAtStart": 2,
+        "personaSource": "C:\\Users\\GNV\\.claude\\agents\\code-reviewer.md",
+        "personaSha256": "c342ea3ab8fa7e7fe36291ee04d65dd6bbe44f1aae88d4564a15ac169aa2c022",
+        "override": true,
+        "endedAt": 1791715144915
+      },
+      {
+        "agentId": "a5bd2969-d061-496b-beee-5629f4d11951",
+        "provider": "openai-codex",
+        "model": "gpt-6.1-sol",
+        "startedAt": 1791715139608,
+        "persona": "test-engineer",
+        "systemSha256": "8c2e840859d163c5036684c480a9562837ce47045a2d480969d10754b0fa13ea",
+        "toolSchemas": [
+          "run_code"
+        ],
+        "activeChildrenAtStart": 3,
+        "personaSource": "C:\\Users\\GNV\\.claude\\agents\\test-engineer.md",
+        "personaSha256": "886a9494a1bdfc281e81fcc581d702fa9cb576b2073b6dbe6c67caaf69ffdcb5",
+        "override": true,
+        "endedAt": 1791715145304
+      }
+    ]
+  },
+  "reports": [
+    {
+      "persona": "code-reviewer",
+      "source": "C:\\Users\\GNV\\.claude\\agents\\code-reviewer.md",
+      "override": true,
+      "personaSha256": "c342ea3ab8fa7e7fe36291ee04d65dd6bbe44f1aae88d4564a15ac169aa2c022",
+      "childId": "67b2a8ff-4b7d-4aa4-9af9-d8e9933a537a",
+      "status": "completed",
+      "stopReason": "completed",
+      "reportPath": "live-code-reviewer-report.md",
+      "reportSha256": "ddc0e67cdb072b17dd463b34c2ed2b97a87701a6d4e71fe19830d9ea847d3519",
+      "reportBytes": 4914,
+      "rawReportPointer": "/operations/87/result/value/reports/0"
+    },
+    {
+      "persona": "security-auditor",
+      "source": "C:\\Users\\GNV\\.claude\\agents\\security-auditor.md",
+      "override": true,
+      "personaSha256": "cce351e1de6e9b39cd77301370d42829205161ff46dec3af42b63c5f0a172404",
+      "childId": "046e1590-8df4-4956-bbf1-c104cdf52e49",
+      "status": "completed",
+      "stopReason": "completed",
+      "reportPath": "live-security-auditor-report.md",
+      "reportSha256": "92b4cf4f2a3cd74c86e3a4805db4c3ba12047281e20cde806f99cd05c60f288d",
+      "reportBytes": 8221,
+      "rawReportPointer": "/operations/87/result/value/reports/1"
+    },
+    {
+      "persona": "test-engineer",
+      "source": "C:\\Users\\GNV\\.claude\\agents\\test-engineer.md",
+      "override": true,
+      "personaSha256": "886a9494a1bdfc281e81fcc581d702fa9cb576b2073b6dbe6c67caaf69ffdcb5",
+      "childId": "a5bd2969-d061-496b-beee-5629f4d11951",
+      "status": "completed",
+      "stopReason": "completed",
+      "reportPath": "live-test-engineer-report.md",
+      "reportSha256": "aee197d25cd3c470007325013c6cf5ab1d0158c51d9112cc8ab6ec2b1699904d",
+      "reportBytes": 4670,
+      "rawReportPointer": "/operations/87/result/value/reports/2"
+    }
+  ],
+  "parentReport": {
+    "path": "live-parent-ship-report.md",
+    "sha256": "90626a92fb848c4302e314ed1df13c322c494bd871b81ccc587f4a9e1ea2f444",
+    "bytes": 22068
+  },
+  "counts": {
+    "observedToolsResultEvents": 104,
+    "observedChildToolsResultEvents": 55,
+    "nativeErrors": 8
+  },
+  "defaultBefore": {
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "medium"
+  },
+  "defaultAfter": {
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "medium"
+  },
+  "errors": [],
+  "fullEvidence": {
+    "path": "live-accepted.json",
+    "sha256": "ec92b29e0910fee5c962fa290a5beec7aa7830a034c2a8b6f18d766fd547abb7",
+    "bytes": 6759232
+  },
+  "limitations": [
+    "Finite read-only synthetic review/ship fixture, not equivalence over all possible projects.",
+    "Configured real-model routing checked for natural review and explicit ship; all nine shared source paths independently verified by deterministic native contracts.",
+    "Current host user persona overrides take upstream-defined precedence; original bundled fallback verified separately.",
+    "No deployment performed; rollback is the original parent-authored plan, not an executed rollback.",
+    "Browser/a11y/performance measurements and human spec/plan/risk approvals are not verified in this non-UI fixture.",
+    "Tool-level error count includes intentional denied-delegation probes; shell exit codes remain in original results and are not automatically equated with unexpected failures.",
+    "The verifier prompt bug (predicate comparing identical side with wrong operand) was corrected before summarization; the recorded case verdicts were recomputed from the retained raw denial results under the corrected predicate, and the recomputation is flagged on the case."
+  ]
+}

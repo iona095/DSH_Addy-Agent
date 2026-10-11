@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_99510175-445b-429b-a913-dfb8e0605854",
+  "task": "timeline-render",
+  "intent": "Render a timeline",
+  "agentId": "dg-addy",
+  "revision": "f1a409bf4fbb3b51c85e22e9265276879e11f4f4",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-GmbP9P",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "renderTimeline"
+  ],
+  "symbolFiles": {
+    "renderTimeline": "src/timeline.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 4,
+    "bytesScanned": 387,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 3,
+    "declarations": {
+      "renderTimeline": []
+    },
+    "similar": {
+      "renderTimeline": []
+    },
+    "references": {
+      "renderTimeline": []
+    }
+  },
+  "at": "2026-10-11T13:22:42.134Z"
+}

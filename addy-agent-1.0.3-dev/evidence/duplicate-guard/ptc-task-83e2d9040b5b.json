@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_3c8ac2fa-bf25-4118-9b17-8730ac7c6b92",
+  "task": "ptc-task",
+  "intent": "nested write under policy",
+  "agentId": "dg-addy",
+  "revision": "129769282dabb08345285102a648efa637e3948c",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-b-2B6AVx",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "ptcDup"
+  ],
+  "symbolFiles": {
+    "ptcDup": "src/ptc-dup.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 3,
+    "bytesScanned": 319,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 2,
+    "declarations": {
+      "ptcDup": []
+    },
+    "similar": {
+      "ptcDup": []
+    },
+    "references": {
+      "ptcDup": []
+    }
+  },
+  "at": "2026-10-11T13:22:52.587Z"
+}

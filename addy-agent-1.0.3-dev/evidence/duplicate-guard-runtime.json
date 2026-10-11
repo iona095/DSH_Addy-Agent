@@ -1,0 +1,536 @@
+{
+  "testedAt": "2026-10-11T14:01:41.142Z",
+  "nodeVersion": "v24.15.0",
+  "runtime": {
+    "dsh": "0.2.1-alpha.2",
+    "ptcRuntime": "0.2.1-alpha.2"
+  },
+  "transport": "real Cordis + real ToolRuntime + real dsh-tool-fs + real Node PTC subprocess; no LLM request",
+  "cases": [
+    {
+      "name": "non-interference: read of production source is allowed",
+      "pass": true,
+      "detail": {
+        "tool": "read",
+        "isError": false
+      }
+    },
+    {
+      "name": "A1 new function where an equivalent exists → denied without evidence",
+      "pass": true,
+      "detail": {
+        "denial": "ADDY-DUPLICATE-GUARD blocked write → src/duplicate.mjs: it introduces new production function(s): parseConfig (src/duplicate.mjs:1)."
+      }
+    },
+    {
+      "name": "A1b preflight with decision \"new\" is rejected while an equivalent declaration exists",
+      "pass": true,
+      "detail": {
+        "rejection": "preflight rejected: decision \"new\" is not justified while equivalent declarations exist. |   - parseConfig is already declared at src/parser.mjs:2 (function)"
+      }
+    },
+    {
+      "name": "A1c explicit reasoning permits the justified new function",
+      "pass": true,
+      "detail": {
+        "recordId": "dg_41b80119-2684-445d-9e5c-2865bfc7090e",
+        "revision": "0cc611a22e96299b74a75857f3f53d5adbfeb7ff",
+        "declaredElsewhere": [
+          "parseConfig@src/parser.mjs:2"
+        ],
+        "acknowledgedCollisions": 1
+      }
+    },
+    {
+      "name": "A1d the same write is now allowed inside the approved scope and revision",
+      "pass": true,
+      "detail": {
+        "created": "src/duplicate.mjs"
+      }
+    },
+    {
+      "name": "A2 new function where no equivalent exists → preflight accepted, write allowed",
+      "pass": true,
+      "detail": {
+        "recordId": "dg_ffdd559e-ea39-4318-af36-8a7fdb03c4a1",
+        "scanned": 5,
+        "created": "src/timeline.mjs"
+      }
+    },
+    {
+      "name": "A3 different function with a similar name is reported, never auto-rejected",
+      "pass": true,
+      "detail": {
+        "similar": [
+          "parseConfig@src/duplicate.mjs score 0.667",
+          "parseConfig@src/parser.mjs score 0.667",
+          "parseConfigStrict@src/parser.mjs score 0.5"
+        ],
+        "created": "src/config-file.mjs"
+      }
+    },
+    {
+      "name": "A4 legitimate composition of existing functionality is authorised with a candidate record",
+      "pass": true,
+      "detail": {
+        "decision": "compose",
+        "created": "normalizeConfig in src/parser.mjs"
+      }
+    },
+    {
+      "name": "A4b extension of one approved task needs no repeated repository search (single preflight)",
+      "pass": true,
+      "detail": {
+        "edits": 3,
+        "extraPreflights": 0
+      }
+    },
+    {
+      "name": "A5 harmless edits are never gated: test file, docs and a function-body change",
+      "pass": true,
+      "detail": {
+        "exempt": [
+          "tests/new.test.mjs",
+          "docs/notes.mjs.md"
+        ],
+        "ungatedEdit": "src/unrelated.mjs"
+      }
+    },
+    {
+      "name": "A5b a production edit that introduces no new function needs no evidence at all",
+      "pass": true,
+      "detail": {
+        "evidenceRecords": 0,
+        "edit": "src/parser.mjs body"
+      }
+    },
+    {
+      "name": "A6 missing then stale discovery evidence is refused with the exact revision pair",
+      "pass": true,
+      "detail": {
+        "oldHead": "0cc611a22e96299b74a75857f3f53d5adbfeb7ff",
+        "newHead": "4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8",
+        "staleDenial": "Recorded evidence is stale: recorded at revision 0cc611a22e96299b74a75857f3f53d5adbfeb7ff, repository HEAD is 4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8."
+      }
+    },
+    {
+      "name": "A7 shell-based source mutation is denied before the tool body runs",
+      "pass": true,
+      "detail": {
+        "deniedShell": [
+          "Set-Content",
+          "redirection"
+        ],
+        "allowedShell": [
+          "git status --porcelain",
+          "node --test tests/parser.test.mjs"
+        ]
+      }
+    },
+    {
+      "name": "A8 git commit is validated against the approval boundary (defense in depth)",
+      "pass": true,
+      "detail": {
+        "blockedCommit": "src/bypass.mjs:1 bypassThing()",
+        "head": "4bc00f830ebd1cf30b43ce38c9f98b61d4d163e8"
+      }
+    },
+    {
+      "name": "A9 post-edit recheck blocks a commit until the collision is acknowledged",
+      "pass": true,
+      "detail": {
+        "blocker": [
+          {
+            "name": "unreviewedName",
+            "path": "src/m2.mjs",
+            "line": 5
+          }
+        ],
+        "acknowledged": true,
+        "commitAfter": true
+      }
+    },
+    {
+      "name": "A10 other presets and unbound agents are untouched",
+      "pass": true,
+      "detail": {
+        "unboundWrite": "allowed",
+        "unboundShell": "allowed",
+        "toolVisibleToPreset": true,
+        "toolVisibleElsewhere": false
+      }
+    },
+    {
+      "name": "A11 an approved shell mutation inside the recorded scope is permitted",
+      "pass": true,
+      "detail": {
+        "allowed": true
+      }
+    },
+    {
+      "name": "A12 overhead: the guard adds bounded cost and ungated calls stay cheap",
+      "pass": true,
+      "detail": {
+        "read production file": "guarded 2.101 ms vs unguarded 2.102 ms (delta -0.001)",
+        "write test file (exempt)": "guarded 5.974 ms vs unguarded 6.18 ms (delta -0.206)",
+        "edit value, no new function": "guarded 10.249 ms vs unguarded 9.606 ms (delta 0.643)",
+        "read-only pwsh command": "guarded 405.121 ms vs unguarded 405.597 ms (delta -0.476)",
+        "production write denied (guarded only)": "p50 0.586 ms / p95 29.526 ms",
+        "preflight, small fixture (guarded only)": "p50 9.509 ms / p95 10.038 ms",
+        "production write, all introduced symbols declared (guarded only)": "p50 6.91 ms / p95 7.351 ms",
+        "production write, undeclared symbol forces a postcheck scan (guarded only)": "p50 16.125 ms / p95 17.963 ms",
+        "git add + git commit incl. boundary validation (guarded only)": "p50 666.561 ms / p95 666.561 ms"
+      }
+    },
+    {
+      "name": "A13 the documented config switch `enabled: false` disables the plugin entirely",
+      "pass": true,
+      "detail": {
+        "gated": false,
+        "toolRegistered": false,
+        "fileCreated": true
+      }
+    },
+    {
+      "name": "R1 absolute-path and relative-path mutations of one repository file produce identical decisions (defect 1)",
+      "pass": true,
+      "detail": {
+        "bodyEditAbs": "allowed",
+        "rewriteAbs": "allowed",
+        "sigAbs": "allowed",
+        "sigRel": "allowed",
+        "newDeclGatedBothForms": true,
+        "denialTextsIdentical": true,
+        "preflightsUsed": 1
+      }
+    },
+    {
+      "name": "R2 a path outside the repository keeps the existing safety behavior",
+      "pass": true,
+      "detail": {
+        "guardDenied": false,
+        "fsToolWroteOutside": true,
+        "note": "fs tool performed the write; guard passthrough unchanged"
+      }
+    },
+    {
+      "name": "R4 unwritable evidence storage rejects the preflight and registers no approval (defect 2)",
+      "pass": true,
+      "detail": {
+        "preflightRejected": true,
+        "approvalRegistered": false,
+        "mutationDenied": true,
+        "causePreserved": "EEXIST: file already exists, mkdir 'C:\\Users\\GNV\\AppData\\Local\\Temp\\dg-evblock-1791727311238'"
+      }
+    },
+    {
+      "name": "R5 the same preflight succeeds on retry once storage is fixed, with independently verified evidence (defect 2)",
+      "pass": true,
+      "detail": {
+        "verified": true,
+        "bytes": 820,
+        "sha256": "e7b69a4fdff1…",
+        "retrySafe": true
+      }
+    },
+    {
+      "name": "R6 a failed post-edit recheck becomes an explicit unresolved blocker that denies commit and push (defect 3)",
+      "pass": true,
+      "detail": {
+        "blocker": {
+          "status": "verification-failed",
+          "file": "src/fault.mjs",
+          "introduced": [
+            "faultThing"
+          ],
+          "error": "injected recheck failure"
+        },
+        "commitDenied": true,
+        "pushDenied": true,
+        "headUnmoved": true
+      }
+    },
+    {
+      "name": "R7 exempt writes, reads and ungated edits never enter the fail-closed recheck path (defect 3 scope)",
+      "pass": true,
+      "detail": {
+        "blockersBefore": 1,
+        "blockersAfter": 1
+      }
+    },
+    {
+      "name": "R8 a successful recheck clears the failure blocker and the commit proceeds (defect 3)",
+      "pass": true,
+      "detail": {
+        "recheckStatus": "verified",
+        "blockers": 0,
+        "committed": true
+      }
+    },
+    {
+      "name": "B0 read-only PTC program is not interfered with",
+      "pass": true,
+      "detail": {
+        "value": {
+          "logs": [],
+          "sandbox": {
+            "mode": "danger-full-access",
+            "denied": false
+          },
+          "result": {
+            "length": 178
+          }
+        }
+      }
+    },
+    {
+      "name": "B1 nested PTC source mutation is denied by the same policy",
+      "pass": true,
+      "detail": {
+        "nestedDenied": true,
+        "fileCreated": false
+      }
+    },
+    {
+      "name": "B2 preflight through the PTC binding authorises the nested mutation",
+      "pass": true,
+      "detail": {
+        "recordId": "dg_2b92f312-e6e9-40ed-8591-ef301f2273a9",
+        "created": "src/ptc-dup.mjs"
+      }
+    },
+    {
+      "name": "B3 direct PTC filesystem write bypassing the tool bindings is denied before execution",
+      "pass": true,
+      "detail": {
+        "denial": "It performs a direct filesystem/process mutation (writeFileSync) outside the guarded tools.write / tools.edit path. Function declarations it writes that no accepted record declares: sneakyDup. A direct write has no post-edit recheck, so its declarations must be covered by the preflight in advance."
+      }
+    },
+    {
+      "name": "B3b a direct PTC write whose declarations are declared in evidence is permitted",
+      "pass": true,
+      "detail": {
+        "created": "src/direct-approved.mjs"
+      }
+    },
+    {
+      "name": "B4 direct PTC filesystem write through child_process is denied too",
+      "pass": true,
+      "detail": {
+        "denial": "It performs a direct filesystem/process mutation (child_process, execSync) outside the guarded tools.write / tools.edit path."
+      }
+    },
+    {
+      "name": "B5 an agent outside the preset scope is unaffected under PTC",
+      "pass": true,
+      "detail": {
+        "allowed": true
+      }
+    },
+    {
+      "name": "B6 nested PTC mutation with an absolute path follows the same normalized decision (defect 1)",
+      "pass": true,
+      "detail": {
+        "nestedAbsoluteWrite": "allowed",
+        "bodyRewriteUngated": true
+      }
+    }
+  ],
+  "shellBinding": "real dsh-tool-pwsh (dsh-pwsh-local + dsh-shell-env + dsh-subprocess-local)",
+  "limitations": [
+    "The pwsh/bash gate is exercised through the tool name and argument contract the native pipeline delivers; if the real Windows shell stack could not be mounted the binding is a sentinel whose body must never run, which is the property under test.",
+    "Deterministic fixture repository only; no production-model compliance claim."
+  ],
+  "performance": [
+    {
+      "label": "read production file",
+      "guarded": {
+        "p50": 2.101,
+        "p95": 2.726,
+        "max": 2.726
+      },
+      "unguarded": {
+        "p50": 2.102,
+        "p95": 2.703,
+        "max": 2.703
+      },
+      "deltaP50": -0.001
+    },
+    {
+      "label": "write test file (exempt)",
+      "guarded": {
+        "p50": 5.974,
+        "p95": 7.059,
+        "max": 7.059
+      },
+      "unguarded": {
+        "p50": 6.18,
+        "p95": 6.311,
+        "max": 6.311
+      },
+      "deltaP50": -0.206
+    },
+    {
+      "label": "edit value, no new function",
+      "guarded": {
+        "p50": 10.249,
+        "p95": 10.872,
+        "max": 10.872
+      },
+      "unguarded": {
+        "p50": 9.606,
+        "p95": 10.01,
+        "max": 10.01
+      },
+      "deltaP50": 0.643
+    },
+    {
+      "label": "read-only pwsh command",
+      "guarded": {
+        "p50": 405.121,
+        "p95": 408.919,
+        "max": 408.919
+      },
+      "unguarded": {
+        "p50": 405.597,
+        "p95": 407.107,
+        "max": 407.107
+      },
+      "deltaP50": -0.476
+    },
+    {
+      "label": "production write denied (guarded only)",
+      "guarded": {
+        "p50": 0.586,
+        "p95": 29.526,
+        "max": 29.526
+      }
+    },
+    {
+      "label": "preflight, small fixture (guarded only)",
+      "guarded": {
+        "p50": 9.509,
+        "p95": 10.038,
+        "max": 10.038
+      }
+    },
+    {
+      "label": "production write, all introduced symbols declared (guarded only)",
+      "guarded": {
+        "p50": 6.91,
+        "p95": 7.351,
+        "max": 7.351
+      }
+    },
+    {
+      "label": "production write, undeclared symbol forces a postcheck scan (guarded only)",
+      "guarded": {
+        "p50": 16.125,
+        "p95": 17.963,
+        "max": 17.963
+      }
+    },
+    {
+      "label": "git add + git commit incl. boundary validation (guarded only)",
+      "guarded": {
+        "p50": 666.561,
+        "p95": 666.561,
+        "max": 666.561
+      }
+    }
+  ],
+  "overhead": {
+    "evaluations": 113,
+    "denied": 17,
+    "allowed": 96,
+    "failures": 0,
+    "totalMs": 534.0653999999995,
+    "maxMs": 82.95450000000164,
+    "preflights": 12,
+    "preflightMs": 118,
+    "rechecks": 20,
+    "recheckMs": 55,
+    "recheckFailures": 0,
+    "byKind": {
+      "untracked-tool": {
+        "count": 35,
+        "totalMs": 0.089,
+        "maxMs": 0.028
+      },
+      "fs-mutation-unapproved": {
+        "count": 13,
+        "totalMs": 140.22,
+        "maxMs": 53.762
+      },
+      "fs-mutation-approved": {
+        "count": 20,
+        "totalMs": 3.896,
+        "maxMs": 0.708
+      },
+      "fs-no-new-function": {
+        "count": 17,
+        "totalMs": 9.992,
+        "maxMs": 0.906
+      },
+      "fs-ungated-path": {
+        "count": 10,
+        "totalMs": 0.252,
+        "maxMs": 0.031
+      },
+      "git-boundary-approved": {
+        "count": 4,
+        "totalMs": 263.426,
+        "maxMs": 82.955
+      },
+      "shell-mutation-unapproved": {
+        "count": 2,
+        "totalMs": 1.027,
+        "maxMs": 0.973
+      },
+      "shell-ungated": {
+        "count": 8,
+        "totalMs": 0.377,
+        "maxMs": 0.082
+      },
+      "git-boundary-denied": {
+        "count": 2,
+        "totalMs": 114.649,
+        "maxMs": 58.436
+      },
+      "shell-mutation-approved": {
+        "count": 1,
+        "totalMs": 0.116,
+        "maxMs": 0.116
+      },
+      "fs-outside-repository": {
+        "count": 1,
+        "totalMs": 0.019,
+        "maxMs": 0.019
+      }
+    },
+    "averageEvaluationMs": 4.726
+  },
+  "hostA": {
+    "mounted": [
+      "dsh-session-projection",
+      "dsh-session",
+      "dsh-agent",
+      "dsh-system-prompt",
+      "dsh-llm",
+      "dsh-fs-local",
+      "dsh-working-directory",
+      "dsh-agent-loop",
+      "dsh-tools",
+      "dsh-tool-fs",
+      "dsh-subprocess-local",
+      "dsh-shell-env",
+      "dsh-pwsh-local",
+      "dsh-tool-pwsh"
+    ],
+    "shellTools": [
+      "pwsh"
+    ],
+    "head": "446efd74c76b997660baf8a2a27d078167ccd60a"
+  },
+  "pass": true
+}

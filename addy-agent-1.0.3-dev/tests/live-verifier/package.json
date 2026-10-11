@@ -1,0 +1,1 @@
+{"name":"@local/dsh-addy-verifier","version":"1.0.1","private":true,"type":"module","description":"Temporary Addy installed-runtime verification; remove after capture","exports":{".":"./live.mjs","./v2":"./live-v2.mjs"},"dsh":{"bundle":{"patch":"./cordis.patch.yml"}}}

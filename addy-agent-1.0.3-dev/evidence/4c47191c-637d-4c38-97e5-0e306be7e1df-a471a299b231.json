@@ -1,0 +1,152 @@
+{
+  "command": "specialists",
+  "arguments": "",
+  "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+  "tasksAttempted": [],
+  "subagents": {
+    "attempted": 3,
+    "started": 3,
+    "completed": 3,
+    "failed": 0
+  },
+  "counts": {
+    "toolCalls": 0,
+    "results": 0,
+    "uniqueResults": 0,
+    "duplicateResults": 0,
+    "failures": 0,
+    "findings": 0,
+    "uniqueFindings": 0,
+    "duplicateFindings": 0
+  },
+  "resultProvenance": [],
+  "groupedFindings": [],
+  "groups": {
+    "byFile": {},
+    "bySeverity": {},
+    "byAgent": {
+      "code-reviewer": [
+        {
+          "persona": "code-reviewer",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\code-reviewer.md",
+          "override": false,
+          "personaSha256": "2d02acb9db1c37521d676587d2e0afb713c8983de957a78efdfa82d27e5fc3da",
+          "childId": "b5438468-08f6-47b7-b372-a3c86023b5a2",
+          "beganAt": 1791725050170,
+          "endedAt": 1791725050230,
+          "status": "completed",
+          "output": [
+            {
+              "type": "text",
+              "text": "Independent native scoped specialist report."
+            }
+          ],
+          "stopReason": "completed",
+          "callerCancelled": false
+        }
+      ],
+      "security-auditor": [
+        {
+          "persona": "security-auditor",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\security-auditor.md",
+          "override": false,
+          "personaSha256": "66a3f68f1c691b600ddb44e88afb138e239d0572df37be84e1f9a427c887dd0a",
+          "childId": "aeca7d68-b15a-4151-88ef-c674ac4dd15a",
+          "beganAt": 1791725050172,
+          "endedAt": 1791725050230,
+          "status": "completed",
+          "output": [
+            {
+              "type": "text",
+              "text": "Independent native scoped specialist report."
+            }
+          ],
+          "stopReason": "completed",
+          "callerCancelled": false
+        }
+      ],
+      "test-engineer": [
+        {
+          "persona": "test-engineer",
+          "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\test-engineer.md",
+          "override": false,
+          "personaSha256": "c4acde91d6307d88515387344a129a2d0679134e587596c3517d73faffcd5aa6",
+          "childId": "0b209e56-c2f3-4c80-aa92-3ef6c816bf94",
+          "beganAt": 1791725050173,
+          "endedAt": 1791725050230,
+          "status": "completed",
+          "output": [
+            {
+              "type": "text",
+              "text": "Independent native scoped specialist report."
+            }
+          ],
+          "stopReason": "completed",
+          "callerCancelled": false
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "incomplete": false,
+  "verificationEvidence": [],
+  "summary": "/specialists: 3/3 specialist reports complete; 0 unique findings; 0 incomplete/error outcomes.",
+  "reports": [
+    {
+      "persona": "code-reviewer",
+      "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\code-reviewer.md",
+      "override": false,
+      "personaSha256": "2d02acb9db1c37521d676587d2e0afb713c8983de957a78efdfa82d27e5fc3da",
+      "childId": "b5438468-08f6-47b7-b372-a3c86023b5a2",
+      "beganAt": 1791725050170,
+      "endedAt": 1791725050230,
+      "status": "completed",
+      "output": [
+        {
+          "type": "text",
+          "text": "Independent native scoped specialist report."
+        }
+      ],
+      "stopReason": "completed",
+      "callerCancelled": false
+    },
+    {
+      "persona": "security-auditor",
+      "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\security-auditor.md",
+      "override": false,
+      "personaSha256": "66a3f68f1c691b600ddb44e88afb138e239d0572df37be84e1f9a427c887dd0a",
+      "childId": "aeca7d68-b15a-4151-88ef-c674ac4dd15a",
+      "beganAt": 1791725050172,
+      "endedAt": 1791725050230,
+      "status": "completed",
+      "output": [
+        {
+          "type": "text",
+          "text": "Independent native scoped specialist report."
+        }
+      ],
+      "stopReason": "completed",
+      "callerCancelled": false
+    },
+    {
+      "persona": "test-engineer",
+      "source": "M:\\AIFUN\\WorkDir\\addy-agent\\upstream\\agents\\test-engineer.md",
+      "override": false,
+      "personaSha256": "c4acde91d6307d88515387344a129a2d0679134e587596c3517d73faffcd5aa6",
+      "childId": "0b209e56-c2f3-4c80-aa92-3ef6c816bf94",
+      "beganAt": 1791725050173,
+      "endedAt": 1791725050230,
+      "status": "completed",
+      "output": [
+        {
+          "type": "text",
+          "text": "Independent native scoped specialist report."
+        }
+      ],
+      "stopReason": "completed",
+      "callerCancelled": false
+    }
+  ],
+  "operations": [],
+  "rawFindings": []
+}

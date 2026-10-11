@@ -1,0 +1,47 @@
+{
+  "recordId": "dg_ae7358a4-60e9-4940-9364-286553f9d7e2",
+  "task": "config-normalisation",
+  "intent": "Compose normalisation around the existing parser",
+  "agentId": "dg-addy",
+  "revision": "99ef7d14a02c6087913572f6bcacd104dc5afa81",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-PVjKQc",
+  "scope": [
+    "src"
+  ],
+  "decision": "compose",
+  "justification": "normalizeConfig is a thin composition of the existing parseConfig.",
+  "symbols": [
+    "normalizeConfig"
+  ],
+  "symbolFiles": {
+    "normalizeConfig": "src/parser.mjs"
+  },
+  "candidates": [
+    {
+      "path": "src/parser.mjs",
+      "name": "parseConfig",
+      "kind": "function",
+      "decision": "compose",
+      "justification": "Reuse the existing parser instead of reimplementing it."
+    }
+  ],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 6,
+    "bytesScanned": 521,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 3,
+    "declarations": {
+      "normalizeConfig": []
+    },
+    "similar": {
+      "normalizeConfig": []
+    },
+    "references": {
+      "normalizeConfig": []
+    }
+  },
+  "at": "2026-10-11T13:12:29.973Z"
+}

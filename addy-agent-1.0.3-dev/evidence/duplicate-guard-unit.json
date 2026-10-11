@@ -1,0 +1,242 @@
+{
+  "testedAt": "2026-10-11T14:01:33.663Z",
+  "nodeVersion": "v24.15.0",
+  "cases": [
+    {
+      "name": "path classification: production vs test, docs, config, declarations, build output",
+      "pass": true,
+      "detail": {
+        "productionExtensions": 37
+      }
+    },
+    {
+      "name": "symbol extraction across languages is stable and comment/string aware",
+      "pass": true,
+      "detail": {
+        "js": [
+          {
+            "name": "real",
+            "kind": "function",
+            "line": 3
+          },
+          {
+            "name": "handle",
+            "kind": "method",
+            "line": 6
+          }
+        ],
+        "symbols": 2
+      }
+    },
+    {
+      "name": "declaredNamesInText finds declarations carried inside command and program strings",
+      "pass": true,
+      "detail": {
+        "names": [
+          "dupThing"
+        ]
+      }
+    },
+    {
+      "name": "acceptance 1: a new function whose equivalent exists is detected, never silently allowed",
+      "pass": true,
+      "detail": {
+        "found": [
+          {
+            "path": "src/parser.mjs",
+            "line": 1,
+            "kind": "function"
+          }
+        ],
+        "introduced": [
+          {
+            "name": "parseConfig",
+            "kind": "function",
+            "line": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "acceptance 2: a new function with no equivalent is permitted by a clean scan",
+      "pass": true,
+      "detail": {
+        "filesScanned": 1,
+        "references": 0
+      }
+    },
+    {
+      "name": "acceptance 3: a different function with a similar name is reported, not rejected",
+      "pass": true,
+      "detail": {
+        "similar": [
+          {
+            "name": "parseConfig",
+            "path": "src/parser.mjs",
+            "line": 1,
+            "score": 0.667
+          }
+        ]
+      }
+    },
+    {
+      "name": "acceptance 4: extension and composition are expressible as a candidate decision",
+      "pass": true,
+      "detail": {
+        "extension": [
+          "normalizeConfig"
+        ],
+        "bodyOnly": 0
+      }
+    },
+    {
+      "name": "acceptance 5: one record authorises every edit inside its scope at its revision",
+      "pass": true,
+      "detail": {
+        "scope": [
+          "src"
+        ]
+      }
+    },
+    {
+      "name": "acceptance 6: missing and stale discovery evidence are distinguishable",
+      "pass": true,
+      "detail": {
+        "head": "99043e73a0743dd4187a1997952c19d331003f04",
+        "introduced": [
+          {
+            "path": "src/new.mjs",
+            "name": "newlyAdded",
+            "kind": "function",
+            "line": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "acceptance 7: nested PTC and shell mutation surfaces are all classified",
+      "pass": true,
+      "detail": {
+        "fsWrite": {
+          "moduleLoad": true,
+          "writePrimitives": [
+            "writeFileSync"
+          ],
+          "processPrimitives": [],
+          "paths": [
+            "src/a.ts"
+          ],
+          "declaresFunction": false,
+          "declaredNames": [],
+          "mutating": true,
+          "gated": true
+        },
+        "fsRead": false,
+        "processWrite": true,
+        "assembledPathGated": false,
+        "nestedProgramGated": false
+      }
+    },
+    {
+      "name": "acceptance 8: every shell write surface maps to a gate decision",
+      "pass": true,
+      "detail": {
+        "Set-Content src/a.ts \"export function d(){}\"": true,
+        "echo \"export function d(){}\" > src/a.ts": true,
+        "Add-Content -Path src/a.ts -Value \"function d(){}\"": true,
+        "Out-File -FilePath src/a.ts -InputObject \"function d(){}\"": true,
+        "python -c \"open('src/a.ts','w').write('def f(): pass')\"": true,
+        "node -e \"require('node:fs').writeFileSync('src/a.ts','function f(){}')\"": true,
+        "[IO.File]::WriteAllText(\"src/a.ts\", \"function f(){}\")": true,
+        "sed -i \"s/a/b/\" src/a.ts": true,
+        "tee src/a.ts": true,
+        "git apply patch.diff": true,
+        "node --test tests/core.test.mjs": false,
+        "git status --porcelain": false,
+        "npm ci": false,
+        "npx prettier --write src/a.ts": false,
+        "rg \"function\" src/": false
+      }
+    },
+    {
+      "name": "acceptance 9: the git boundary reads added lines, not whole files",
+      "pass": true,
+      "detail": {
+        "introduced": [
+          {
+            "path": "src/parser.mjs",
+            "name": "addedLater",
+            "kind": "function",
+            "line": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-only safety: path helpers never escape the repository root",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "name": "defect 1 (R1): analyzeFsMutation reads through the single normalized repository path",
+      "pass": true,
+      "detail": {
+        "reads": [
+          "src/util.js",
+          "src/util.js",
+          "src/a.js"
+        ],
+        "absoluteIntroduced": 0,
+        "newDeclarationDetected": true
+      }
+    },
+    {
+      "name": "defect 2 (R1): evidence persistence verifies bytes and digest and fails closed",
+      "pass": true,
+      "detail": {
+        "verified": true,
+        "ackLabel": "acknowledge-b8386d85c627.json",
+        "writeFailure": "propagated",
+        "mismatch": "detected+unlinked",
+        "truncated": "detected"
+      }
+    }
+  ],
+  "benchmark": {
+    "files": 1000,
+    "approximateBytes": 2377500,
+    "p50Ms": 496.1,
+    "maxMs": 524.5,
+    "exactHits": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "indexedDeclarations": 25000,
+    "similarForExistingName": [
+      {
+        "name": "helper35_4_7",
+        "path": "packages/pkg35/src/module4.ts",
+        "line": 43,
+        "score": 0.5
+      },
+      {
+        "name": "helper35_7_4",
+        "path": "packages/pkg35/src/module7.ts",
+        "line": 25,
+        "score": 0.5
+      },
+      {
+        "name": "helper36_4_7",
+        "path": "packages/pkg36/src/module4.ts",
+        "line": 43,
+        "score": 0.5
+      }
+    ]
+  },
+  "pass": true
+}

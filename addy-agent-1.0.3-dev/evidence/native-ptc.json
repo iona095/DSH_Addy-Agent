@@ -1,0 +1,432 @@
+{
+  "runtimeVersion": "0.2.1-alpha.2",
+  "transport": "Real Node PTC subprocess and real ToolRuntime bindings; no LLM request",
+  "availableSchemas": [
+    {
+      "name": "native_repeat",
+      "description": "Test-only native PTC binding",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "native_effect",
+      "description": "Test-only native PTC binding",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "native_failure",
+      "description": "Test-only native PTC binding",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "run_code",
+      "description": "Execute a TypeScript program against the available tools. Takes two required arguments: `description`, a short summary of what the program does, and `code`, the BODY of an async function (erasable syntax only; top-level `await` and `return` work). Call tools as `await tools.name(args)` per the declarations in the system prompt. Only what you print or return is program output — curate it. Image-bearing subtool results are attached after the run. Each call runs in a fresh Node process. Node APIs are available through await import(...). Relative paths use the supplied working directory; process.env starts empty. Direct filesystem access follows this execution's sandbox policy. Each program starts in the Session's current directory. Running programs keep their initial directory. A sandbox escalation approves this complete program for one execution only. Nested tools retain their own policies and approvals. Request wider access only after evidence of a denial. Earlier effects may already have completed: inspect them before explicitly retrying. Programs are never replayed automatically.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Clear, concise description of what this program does in active voice, 5-10 words (shown in the UI). Provide `description` before `code` in the arguments. Examples: \"Count TODO markers across packages\"; \"Read failing test and its fixture\"; \"Rename config key in every cordis.yml\"."
+          },
+          "code": {
+            "type": "string",
+            "description": "The program: the body of an async TypeScript function."
+          },
+          "timeoutMs": {
+            "type": "number",
+            "description": "Positive elapsed-time budget in milliseconds, including nested tool and approval waits. Default 120000; capped at 600000. Zero does not disable the deadline."
+          },
+          "sandbox_permissions": {
+            "type": "string",
+            "description": "Wider sandbox mode for this complete program execution; requires justification and approval.",
+            "enum": [
+              "workspace-write",
+              "danger-full-access"
+            ]
+          },
+          "justification": {
+            "type": "string",
+            "description": "Reason this complete program needs wider access, shown to the user for approval. Use the language of the user’s current request."
+          }
+        },
+        "required": [
+          "description",
+          "code"
+        ]
+      }
+    }
+  ],
+  "pass": true,
+  "result": {
+    "isError": false,
+    "content": [
+      {
+        "type": "text",
+        "text": "native evidence retained\n{\n  \"results\": [\n    {\n      \"same\": \"result\",\n      \"evidence\": \"full evidence marker\"\n    },\n    {\n      \"same\": \"result\",\n      \"evidence\": \"full evidence marker\"\n    },\n    {\n      \"sequence\": 1\n    },\n    {\n      \"sequence\": 2\n    },\n    {\n      \"error\": {\n        \"name\": \"ToolCallError\",\n        \"message\": \"intentional native bound tool error: retained detail\",\n        \"toolName\": \"native_failure\"\n      }\n    }\n  ]\n}"
+      }
+    ],
+    "value": {
+      "logs": [
+        "native evidence retained"
+      ],
+      "sandbox": {
+        "mode": "danger-full-access",
+        "denied": false
+      },
+      "result": {
+        "results": [
+          {
+            "same": "result",
+            "evidence": "full evidence marker"
+          },
+          {
+            "same": "result",
+            "evidence": "full evidence marker"
+          },
+          {
+            "sequence": 1
+          },
+          {
+            "sequence": 2
+          },
+          {
+            "error": {
+              "name": "ToolCallError",
+              "message": "intentional native bound tool error: retained detail",
+              "toolName": "native_failure"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "operations": [
+    {
+      "task": "native_repeat",
+      "callId": "native-ptc-root:ptc:1",
+      "arguments": {},
+      "result": {
+        "same": "result",
+        "evidence": "full evidence marker"
+      },
+      "error": null,
+      "verificationEvidence": [
+        {
+          "type": "text",
+          "text": "{\"same\":\"result\",\"evidence\":\"full evidence marker\"}"
+        }
+      ]
+    },
+    {
+      "task": "native_repeat",
+      "callId": "native-ptc-root:ptc:2",
+      "arguments": {},
+      "result": {
+        "same": "result",
+        "evidence": "full evidence marker"
+      },
+      "error": null,
+      "verificationEvidence": [
+        {
+          "type": "text",
+          "text": "{\"same\":\"result\",\"evidence\":\"full evidence marker\"}"
+        }
+      ]
+    },
+    {
+      "task": "native_effect",
+      "callId": "native-ptc-root:ptc:3",
+      "arguments": {},
+      "result": {
+        "sequence": 1
+      },
+      "error": null,
+      "verificationEvidence": [
+        {
+          "type": "text",
+          "text": "{\"sequence\":1}"
+        }
+      ]
+    },
+    {
+      "task": "native_effect",
+      "callId": "native-ptc-root:ptc:4",
+      "arguments": {},
+      "result": {
+        "sequence": 2
+      },
+      "error": null,
+      "verificationEvidence": [
+        {
+          "type": "text",
+          "text": "{\"sequence\":2}"
+        }
+      ]
+    },
+    {
+      "task": "native_failure",
+      "callId": "native-ptc-root:ptc:5",
+      "arguments": {},
+      "result": null,
+      "error": {
+        "message": "intentional native bound tool error: retained detail"
+      },
+      "verificationEvidence": [
+        {
+          "type": "text",
+          "text": "Error: intentional native bound tool error: retained detail"
+        }
+      ]
+    }
+  ],
+  "sideEffects": 2,
+  "maxActive": 2,
+  "full": {
+    "command": "native-ptc",
+    "arguments": "",
+    "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+    "tasksAttempted": [
+      "native_repeat",
+      "native_repeat",
+      "native_effect",
+      "native_effect",
+      "native_failure"
+    ],
+    "subagents": {
+      "attempted": 0,
+      "started": 0,
+      "completed": 0,
+      "failed": 0
+    },
+    "counts": {
+      "toolCalls": 5,
+      "results": 5,
+      "uniqueResults": 4,
+      "duplicateResults": 1,
+      "failures": 1,
+      "findings": 0,
+      "uniqueFindings": 0,
+      "duplicateFindings": 0
+    },
+    "resultProvenance": [
+      {
+        "key": "23105d18e49093832b3cd7199dbc795b9ec1d9fcf5771954381bc92d752477da",
+        "operations": [
+          0,
+          1
+        ]
+      },
+      {
+        "key": "603ff4b70ceeeda2a87631465b1a7089df62b5d48e4426d1bbe9bd2c219f0bfd",
+        "operations": [
+          2
+        ]
+      },
+      {
+        "key": "ab0c6c261cd903ed5d77992a631800ef9851764a7849cef14384ab3566fe2487",
+        "operations": [
+          3
+        ]
+      },
+      {
+        "key": "a782407e1b14346f3329ba4d71ca6ebf6c15f8e43bdda91cdfbfe94f26e7a0af",
+        "operations": [
+          4
+        ]
+      }
+    ],
+    "groupedFindings": [],
+    "groups": {
+      "byFile": {},
+      "bySeverity": {},
+      "byAgent": {}
+    },
+    "errors": [
+      {
+        "task": "native_failure",
+        "error": {
+          "message": "intentional native bound tool error: retained detail"
+        }
+      }
+    ],
+    "incomplete": true,
+    "verificationEvidence": [
+      "native evidence retained"
+    ],
+    "summary": "/native-ptc: 0/0 specialist reports complete; 0 unique findings; 1 incomplete/error outcomes.",
+    "reports": [],
+    "operations": [
+      {
+        "task": "native_repeat",
+        "callId": "native-ptc-root:ptc:1",
+        "arguments": {},
+        "result": {
+          "same": "result",
+          "evidence": "full evidence marker"
+        },
+        "error": null,
+        "verificationEvidence": [
+          {
+            "type": "text",
+            "text": "{\"same\":\"result\",\"evidence\":\"full evidence marker\"}"
+          }
+        ]
+      },
+      {
+        "task": "native_repeat",
+        "callId": "native-ptc-root:ptc:2",
+        "arguments": {},
+        "result": {
+          "same": "result",
+          "evidence": "full evidence marker"
+        },
+        "error": null,
+        "verificationEvidence": [
+          {
+            "type": "text",
+            "text": "{\"same\":\"result\",\"evidence\":\"full evidence marker\"}"
+          }
+        ]
+      },
+      {
+        "task": "native_effect",
+        "callId": "native-ptc-root:ptc:3",
+        "arguments": {},
+        "result": {
+          "sequence": 1
+        },
+        "error": null,
+        "verificationEvidence": [
+          {
+            "type": "text",
+            "text": "{\"sequence\":1}"
+          }
+        ]
+      },
+      {
+        "task": "native_effect",
+        "callId": "native-ptc-root:ptc:4",
+        "arguments": {},
+        "result": {
+          "sequence": 2
+        },
+        "error": null,
+        "verificationEvidence": [
+          {
+            "type": "text",
+            "text": "{\"sequence\":2}"
+          }
+        ]
+      },
+      {
+        "task": "native_failure",
+        "callId": "native-ptc-root:ptc:5",
+        "arguments": {},
+        "result": null,
+        "error": {
+          "message": "intentional native bound tool error: retained detail"
+        },
+        "verificationEvidence": [
+          {
+            "type": "text",
+            "text": "Error: intentional native bound tool error: retained detail"
+          }
+        ]
+      }
+    ],
+    "rawFindings": []
+  },
+  "concise": {
+    "command": "native-ptc",
+    "arguments": "",
+    "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+    "tasksAttempted": [
+      "native_repeat",
+      "native_repeat",
+      "native_effect",
+      "native_effect",
+      "native_failure"
+    ],
+    "subagents": {
+      "attempted": 0,
+      "started": 0,
+      "completed": 0,
+      "failed": 0
+    },
+    "counts": {
+      "toolCalls": 5,
+      "results": 5,
+      "uniqueResults": 4,
+      "duplicateResults": 1,
+      "failures": 1,
+      "findings": 0,
+      "uniqueFindings": 0,
+      "duplicateFindings": 0
+    },
+    "resultProvenance": [
+      {
+        "key": "23105d18e49093832b3cd7199dbc795b9ec1d9fcf5771954381bc92d752477da",
+        "operations": [
+          0,
+          1
+        ]
+      },
+      {
+        "key": "603ff4b70ceeeda2a87631465b1a7089df62b5d48e4426d1bbe9bd2c219f0bfd",
+        "operations": [
+          2
+        ]
+      },
+      {
+        "key": "ab0c6c261cd903ed5d77992a631800ef9851764a7849cef14384ab3566fe2487",
+        "operations": [
+          3
+        ]
+      },
+      {
+        "key": "a782407e1b14346f3329ba4d71ca6ebf6c15f8e43bdda91cdfbfe94f26e7a0af",
+        "operations": [
+          4
+        ]
+      }
+    ],
+    "groupedFindings": [],
+    "errors": [
+      {
+        "task": "native_failure",
+        "error": {
+          "message": "intentional native bound tool error: retained detail"
+        }
+      }
+    ],
+    "incomplete": true,
+    "verificationEvidence": [
+      "native evidence retained"
+    ],
+    "summary": "/native-ptc: 0/0 specialist reports complete; 0 unique findings; 1 incomplete/error outcomes.",
+    "groups": {
+      "byFile": {},
+      "bySeverity": {},
+      "byAgent": {}
+    },
+    "fullResult": {
+      "path": "/M:/AIFUN/WorkDir/addy-agent/evidence/native-ptc.json",
+      "pointer": "/full",
+      "sha256": "57dbe01f2d9a0da5acb26d4d0fc6c9320aba9b96796706cecc0c685e11809f7c",
+      "bytes": 2339
+    },
+    "specialistReports": [],
+    "note": "Full independent reports and all raw results remain in fullResult.path (JSON). Read the original reports at specialistReports[*].fullResultPointer before final synthesis; never substitute this summary for required original report sections."
+  }
+}

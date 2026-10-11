@@ -1,0 +1,7 @@
+- insert:
+    - id: addy-live-verification
+      name: 'file:///M:/AIFUN/WorkDir/addy-agent/tests/live-verifier/live-v4.mjs'
+      config:
+        sourceSessionId: session-7dd7919d-d533-4566-865d-6f35e2df58d4
+        fixtureDirectory: M:/AIFUN/WorkDir/addy-agent/tests/live-fixture
+        outputDirectory: M:/AIFUN/WorkDir/addy-agent/evidence

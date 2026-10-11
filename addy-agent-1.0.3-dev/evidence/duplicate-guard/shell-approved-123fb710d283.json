@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_57dcf495-89c5-4306-992f-6f2ce5f904a4",
+  "task": "shell-approved",
+  "intent": "x",
+  "agentId": "dg-shell-approved",
+  "revision": "54cb42c4c1b8582d533b2cb1e5e0921acc40c44c",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-wnj1na",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "shellApproved"
+  ],
+  "symbolFiles": {
+    "shellApproved": "src/shell-approved.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 4,
+    "bytesScanned": 306,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 3,
+    "declarations": {
+      "shellApproved": []
+    },
+    "similar": {
+      "shellApproved": []
+    },
+    "references": {
+      "shellApproved": []
+    }
+  },
+  "at": "2026-10-11T13:07:14.114Z"
+}

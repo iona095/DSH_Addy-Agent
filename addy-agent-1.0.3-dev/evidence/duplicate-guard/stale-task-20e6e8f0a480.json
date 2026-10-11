@@ -1,0 +1,39 @@
+{
+  "recordId": "dg_c429a43a-4d10-4aba-86b3-5e43ed19fa0f",
+  "task": "stale-task",
+  "intent": "x",
+  "agentId": "dg-stale",
+  "revision": "f8f69b29bf37018ab38e77bc98047b11b33ad5ed",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-Tcrvkv",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "staleThing"
+  ],
+  "symbolFiles": {
+    "staleThing": "src/stale.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 6,
+    "bytesScanned": 709,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 3,
+    "declarations": {
+      "staleThing": []
+    },
+    "similar": {
+      "staleThing": []
+    },
+    "references": {
+      "staleThing": []
+    }
+  },
+  "at": "2026-10-11T13:14:02.200Z"
+}

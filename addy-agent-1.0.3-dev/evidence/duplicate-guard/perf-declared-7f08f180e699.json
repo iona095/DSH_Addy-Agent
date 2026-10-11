@@ -1,0 +1,64 @@
+{
+  "recordId": "dg_bbd70934-0e37-4df2-ab7b-8c5976a1c1c8",
+  "task": "perf-declared",
+  "intent": "overhead probe, all symbols declared up front",
+  "agentId": "dg-perf",
+  "revision": "de939affea679e501b36a2383a908b86fe94c85c",
+  "root": "C:\\Users\\GNV\\AppData\\Local\\Temp\\addy-dg-a-U7DUFf",
+  "scope": [
+    "src"
+  ],
+  "decision": "new",
+  "justification": null,
+  "symbols": [
+    "perfDeclared0",
+    "perfDeclared1",
+    "perfDeclared2",
+    "perfDeclared3",
+    "perfDeclared4",
+    "perfDeclared5"
+  ],
+  "symbolFiles": {
+    "perfDeclared0": "src/perf-declared-0.mjs",
+    "perfDeclared1": "src/perf-declared-1.mjs",
+    "perfDeclared2": "src/perf-declared-2.mjs",
+    "perfDeclared3": "src/perf-declared-3.mjs",
+    "perfDeclared4": "src/perf-declared-4.mjs",
+    "perfDeclared5": "src/perf-declared-5.mjs"
+  },
+  "candidates": [],
+  "collisions": [],
+  "acknowledged": [],
+  "scan": {
+    "filesScanned": 18,
+    "bytesScanned": 1206,
+    "truncated": false,
+    "truncatedReason": null,
+    "durationMs": 8,
+    "declarations": {
+      "perfDeclared0": [],
+      "perfDeclared1": [],
+      "perfDeclared2": [],
+      "perfDeclared3": [],
+      "perfDeclared4": [],
+      "perfDeclared5": []
+    },
+    "similar": {
+      "perfDeclared0": [],
+      "perfDeclared1": [],
+      "perfDeclared2": [],
+      "perfDeclared3": [],
+      "perfDeclared4": [],
+      "perfDeclared5": []
+    },
+    "references": {
+      "perfDeclared0": [],
+      "perfDeclared1": [],
+      "perfDeclared2": [],
+      "perfDeclared3": [],
+      "perfDeclared4": [],
+      "perfDeclared5": []
+    }
+  },
+  "at": "2026-10-11T13:24:27.523Z"
+}

@@ -1,0 +1,76 @@
+{
+  "testedAt": "2026-10-11T14:01:54.158Z",
+  "cases": [
+    {
+      "name": "the pinned upstream tree is byte-identical (212 manifest-tracked files)",
+      "pass": true,
+      "detail": {
+        "revision": "1be8e34187e34647bb83adc3a1323b26ae6f6abe",
+        "files": 212,
+        "treeSha256": "9857b3fe752a214b67b4877bbb61c14cac8509ff74b49f614f3aa4edcbf41979",
+        "newestUpstreamMtime": "2026-10-11T09:42:24.024Z"
+      }
+    },
+    {
+      "name": "every file that must not change keeps its exact pre-change bytes",
+      "pass": true,
+      "detail": {
+        "adapter-v2.mjs": "f6c55969122dbf60354dfc1b8c3c520f9eaebfdd0bffaa5f6f82c519f89e8c1c",
+        "core-v2.mjs": "aa601cab6498dd1d225e29ca4980a3cc244daed61a336beb8bde582b9202c596",
+        "core.mjs": "58f4759eb01cd52189a6a3c02fe6aae147ff0a42eff0a1d6b5241b8931f2e9ab",
+        "index.mjs": "75f1d8b0725df27dbf8c7ebe62ba7ba8864903a1f0bc632b7c06908e2a3081ce",
+        "upstream-manifest.json": "62128b77abfb84f7daedc04c2f3af6bfc03cdb40dba4da366e18e7544839f13b",
+        "package.json": "357a8957adc762d4d4de92a3150f12584c634c03885e5e83c5a5043403fcc8d1",
+        "cordis.patch.yml": "ea59fc8a873c35c18df66bb11aec975b33b80f1894b11eefdf99b73ca1d9b3c8"
+      }
+    },
+    {
+      "name": "the only files differing from the pre-change baseline are the two composition files",
+      "pass": true,
+      "detail": {
+        "differing": [
+          "package.json",
+          "cordis.patch.yml"
+        ],
+        "note": "Both are Addy-preset composition files, not pinned upstream content. Documentation additions (README.md, VERIFICATION.md, DUPLICATE-GUARD.md) and the two new guard modules are additive."
+      }
+    },
+    {
+      "name": "the nine commands, twenty-five skills and four personas are untouched",
+      "pass": true,
+      "detail": {
+        "commands": 9,
+        "skills": 25,
+        "personas": [
+          {
+            "persona": "code-reviewer",
+            "sha256": "2d02acb9db1c37521d676587d2e0afb713c8983de957a78efdfa82d27e5fc3da"
+          },
+          {
+            "persona": "security-auditor",
+            "sha256": "66a3f68f1c691b600ddb44e88afb138e239d0572df37be84e1f9a427c887dd0a"
+          },
+          {
+            "persona": "test-engineer",
+            "sha256": "c4acde91d6307d88515387344a129a2d0679134e587596c3517d73faffcd5aa6"
+          },
+          {
+            "persona": "web-performance-auditor",
+            "sha256": "0928b1cf8103262a364bce0c1fc689a918852e2275441f1b2e687adfa1e607e9"
+          }
+        ]
+      }
+    },
+    {
+      "name": "package.json differs only by the two duplicate-guard entries",
+      "pass": true,
+      "detail": {
+        "exports": [
+          "./duplicate-guard",
+          "./duplicate-guard-core"
+        ]
+      }
+    }
+  ],
+  "pass": true
+}
