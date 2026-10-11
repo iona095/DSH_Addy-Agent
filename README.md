@@ -41,4 +41,5 @@ Disable: `plugin_manager` → `set_bundle` `@local/dsh-addy-agent` enabled false
 
 ## Releases
 
-See Releases `v1.0.3` for prior `addy-agent-1.0.3-latest.zip` + `addy-agent-1.0.3-dev.zip`; R2 workspace uses `addy-agent-1.0.3.r2-Install/` + `addy-agent-1.0.3.r2-dev/` directly (no local zips).
+- `v1.0.3-r2` ([release](https://github.com/iona095/DSH_Addy-Agent/releases/tag/v1.0.3-r2)): `addy-agent-1.0.3.r2-Install.zip` (install) + `addy-agent-1.0.3.r2-dev.zip` (evolve). Guard generation `r2`.
+- Prior `v1.0.3`: `addy-agent-1.0.3-latest.zip` + `addy-agent-1.0.3-dev.zip`.
